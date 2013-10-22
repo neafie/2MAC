@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".AddAchActivity" >
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Add Ach" 
+        android:onClick="AddAch"/>
+    
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="Delete List"
+        android:onClick="Delete" 
+        />
+	
+   <TextView 
+       android:id="@+id/achtotal"
+       android:layout_width="135dp"
+   	   android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_below="@id/button1"
+       android:text="Achievements: "
+       />
+   
+   <TextView 
+       android:id="@+id/pointtotal"
+       android:layout_width="135dp"
+   	   android:layout_height="wrap_content"
+       android:layout_alignParentRight="true"
+       android:layout_below="@id/button1"
+       android:text="Points: "
+       />
+   			<ListView
+   			android:id="@id/android:list"
+   			android:layout_width="match_parent"
+   			android:layout_height="wrap_content"
+   			android:layout_below="@id/achtotal">
+   			</ListView>
+
+   			<TextView
+   			    android:id="@+id/tv_at_i"
+   			    android:layout_width="wrap_content"
+   			    android:layout_height="wrap_content"
+   			    android:layout_alignRight="@+id/button1"
+   			    android:layout_below="@+id/button1"
+   			    android:text="AT" />
+
+   			<TextView
+   			    android:id="@+id/tv_pt_i"
+   			    android:layout_width="wrap_content"
+   			    android:layout_height="wrap_content"
+   			    android:layout_above="@id/android:list"
+   			    android:layout_alignLeft="@+id/pointtotal"
+   			    android:layout_marginLeft="51dp"
+   			    android:text="PT" />
+
+</RelativeLayout>

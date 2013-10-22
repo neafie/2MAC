@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mlong.mla"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <permission android:name="com.mlong.mla.provider.permission.READ_PERMISSION" >
+    </permission>
+    <permission android:name="com.mlong.mla.provider.permission.WRITE_PERMISSION" >
+    </permission>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.mlong.mla.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.mlong.mla.AddListActivity"
+            android:label="@string/title_activity_add_list"
+            android:parentActivityName="com.mlong.mla" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mlong.mla" />
+        </activity>
+        <activity
+            android:name="com.mlong.mla.AddAchActivity"
+            android:label="@string/title_activity_add_ach" >
+        </activity>
+        <activity
+            android:name="com.mlong.mla.LookDialog"
+            android:label="@string/title_activity_look_dialog" >
+        </activity>
+        <activity
+            android:name="com.mlong.mla.Items"
+            android:label="@string/title_activity_items" >
+        </activity>
+    </application>
+
+</manifest>
