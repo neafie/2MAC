@@ -123,8 +123,7 @@ public class Friend_Add_Achievement_Fragment extends SherlockFragment {
 		int randkey = rand.nextInt(MAX_VALUE);
 		
 		//bundle up all data to go back to achievment list
-		//Intent otherintent = getIntent();
-		//int key = otherintent.getIntExtra("com.mlong.mla", 0); 
+
 		
 		Friend_Add_Achievement_Fragment myfrag = this;
         Bundle myotherbundle;
@@ -148,10 +147,6 @@ public class Friend_Add_Achievement_Fragment extends SherlockFragment {
         	mybundle.putString("datekey","");
         	mybundle.putString("timekey", "");
         }
-        
-		//Intent databackIntent = new Intent();
-		//databackIntent.putExtras(mybundle);
-		//setResult(RESULT_OK,databackIntent);
 	    
 	    //store in database
 		ACHDatabase myDB = new ACHDatabase(getActivity());

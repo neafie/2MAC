@@ -112,7 +112,7 @@ public class Friend_Lists_Fragment extends SherlockFragment
                 newFragment.setArguments(mybundle);
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 
-                transaction.replace(R.id.realtabcontent, newFragment, "friends1");
+                transaction.replace(R.id.realtabcontent, newFragment, "friends");
                 transaction.addToBackStack(null);
  
                 // Commit the transaction

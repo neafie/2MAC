@@ -244,8 +244,8 @@ public class Friend_Achievement_List_Fragment extends SherlockFragment {
                 newFragment.setArguments(mybundle);
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 
-                transaction.replace(R.id.realtabcontent, newFragment, "friends2");
-                transaction.addToBackStack("friends");
+                transaction.replace(R.id.realtabcontent, newFragment, "friends");
+                transaction.addToBackStack(null);
  
                 // Commit the transaction
                 transaction.commit();
@@ -266,7 +266,7 @@ public class Friend_Achievement_List_Fragment extends SherlockFragment {
                 newFragment.setArguments(mybundle);
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 
-                transaction.replace(R.id.realtabcontent, newFragment, "friends3");
+                transaction.replace(R.id.realtabcontent, newFragment, "friends");
                 transaction.addToBackStack(null);
                 transaction.commit();
         		

@@ -43,8 +43,6 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
 		
 		view = inflater.inflate(R.layout.activity_achievment_page, container, false);
 		
-		//Intent intent = getIntent();
-		
         Bundle mybundle;
         mybundle = myfrag.getArguments();
 		
