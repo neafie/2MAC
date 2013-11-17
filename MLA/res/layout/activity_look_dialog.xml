@@ -26,23 +26,6 @@
         android:text="DESC" />
 
     <TextView
-        android:id="@+id/tv_desc_s"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Description: " />
-
-    <TextView
-        android:id="@+id/tv_points_s"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tv_desc_s"
-        android:layout_below="@+id/tv_desc_s"
-        android:layout_marginTop="15dp"
-        android:text="Points: " />
-
-    <TextView
         android:id="@+id/tv_numb_i"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,24 +33,6 @@
         android:layout_alignBottom="@+id/tv_com_s"
         android:layout_toRightOf="@+id/tv_com_s"
         android:text="NUMB" />
-
-    <TextView
-        android:id="@+id/tv_com_s"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tv_points_s"
-        android:layout_below="@+id/tv_points_i"
-        android:layout_marginTop="49dp"
-        android:text="Completions Needed: " />
-
-    <TextView
-        android:id="@+id/tv_com2_s"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tv_numb_i"
-        android:layout_alignLeft="@+id/tv_com_s"
-        android:layout_marginBottom="16dp"
-        android:text="Completions: " />
 
     <TextView
         android:id="@+id/tv_com2_i"
@@ -78,12 +43,105 @@
         android:layout_toRightOf="@+id/tv_com2_s"
         android:text="COMP2" />
 
+    <TextView
+        android:id="@+id/tv_desc_s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="77dp"
+        android:text="Description: " />
+
+    <TextView
+        android:id="@+id/tv_points_s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_desc_s"
+        android:text="Points: " />
+
+    <TextView
+        android:id="@+id/tv_com_s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_points_s"
+        android:text="Completions Needed: " />
+
+    <TextView
+        android:id="@+id/tv_com2_s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_com_s"
+        android:text="Completions: " />
+
+    <TextView
+        android:id="@+id/tv_time_remain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_com2_s"
+        android:text="Time Remaining: " />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_time_remain" 
+        android:text="Day"/>
+
     <Button
         android:id="@+id/b_addcomp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/tv_desc_i"
-        android:layout_toRightOf="@+id/tv_numb_i"
-        android:text="AddComp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="AddComp" 
+        />
+
+    <TextView
+        android:id="@+id/tv_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_time"
+        android:layout_alignBottom="@+id/tv_time"
+        android:layout_toRightOf="@+id/tv_time"
+        android:text="Hour" />
+
+    <TextView
+        android:id="@+id/tv_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_time_remain"
+        android:layout_toLeftOf="@+id/tv_desc_i"
+        android:text="Min" />
+
+    <Button
+        android:id="@+id/b_addphoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/b_addcomp"
+        android:layout_alignBottom="@+id/b_addcomp"
+        android:layout_toRightOf="@+id/b_addcomp"
+        android:onClick="takePhoto"
+        android:text="AddPhoto" />
+
+    <ImageView
+        android:id="@+id/iv_photo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/tv_sec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_min"
+        android:layout_alignBottom="@+id/tv_min"
+        android:layout_toRightOf="@+id/tv_min"
+        android:text="Sec" />
 
 </RelativeLayout>

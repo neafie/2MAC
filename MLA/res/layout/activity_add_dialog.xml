@@ -13,7 +13,7 @@
        android:layout_height="wrap_content"
        android:id="@+id/tv_fname"
        android:gravity="left"
-       android:text="Add A List"
+       android:text="Add a List"
        android:textSize="20sp"
        />
   
@@ -31,7 +31,26 @@
    </EditText>
    </TableRow>
    
- 
+ <TableRow>
+   <TextView 
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/tv_listdesc"
+       android:gravity="left"
+       android:text="Description"
+       android:textSize="20sp"
+       />
+  
+   <EditText
+       android:id="@+id/et_listdesc"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:ems="10"
+       android:inputType="textCapWords"
+       android:layout_weight="1"
+       >   
+   </EditText>
+   </TableRow>
    
        
 </TableLayout>

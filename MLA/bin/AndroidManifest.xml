@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="17" />
 
     <permission android:name="com.mlong.mla.provider.permission.READ_PERMISSION" >
@@ -13,22 +13,21 @@
     <permission android:name="com.mlong.mla.provider.permission.WRITE_PERMISSION" >
     </permission>
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" >
+    </uses-feature>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.mlong.mla.MainActivity"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.mlong.mla.AddListActivity"
+            android:name="com.mlong.mla.Friend_Add_Achievement_Fragment"
             android:label="@string/title_activity_add_list"
             android:parentActivityName="com.mlong.mla" >
             <meta-data
@@ -36,16 +35,26 @@
                 android:value="com.mlong.mla" />
         </activity>
         <activity
-            android:name="com.mlong.mla.AddAchActivity"
+            android:name="com.mlong.mla.Friend_Achievement_List_Fragment"
+            android:configChanges="orientation"
             android:label="@string/title_activity_add_ach" >
         </activity>
         <activity
-            android:name="com.mlong.mla.LookDialog"
-            android:label="@string/title_activity_look_dialog" >
+            android:name="com.mlong.mla.Friend_Achievement_Details_Fragment"
+            android:label="@string/title_activity_achievment_page" >
         </activity>
         <activity
-            android:name="com.mlong.mla.Items"
-            android:label="@string/title_activity_items" >
+            android:name="com.mlong.mla.VieTabActivity"
+            android:label="@string/title_activity_my_tab" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.mlong.mla.FragmentViewGroup"
+            android:label="@string/title_activity_fragment_view_group" >
         </activity>
     </application>
 

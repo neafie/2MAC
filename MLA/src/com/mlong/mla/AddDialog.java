@@ -3,6 +3,7 @@ package com.mlong.mla;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -42,7 +43,7 @@ public class AddDialog extends DialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
         builder.setView(inflater.inflate(R.layout.activity_add_dialog, null))
-        	   .setMessage(R.string.dialog_add)
+        	   .setMessage(R.string.app_name)
                .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int id) {
                 	 
