@@ -25,11 +25,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Friend_Achievement_Details_Fragment extends SherlockFragment {
+public class Friend_Achievement_Details_Fragment extends BaseFragment {
 
 	boolean iscomplete = false;
 	String dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/ViePics/"; 
-	int TAKE_PHOTO_CODE = 0;
+	int TAKE_PHOTO_CODE = 1337;
 	int DELETECODE = 4;
 	Bundle mybundle = new Bundle();
 	View view;
@@ -333,7 +333,7 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
 	
 	public void onActivityResult(int ReqC, int ResC, Intent data)
 	{
-		//Intent intent = getIntent();
+		Log.i("vie","Made It to Activity Result, ReqC =  " + ReqC + " and ResC = " + ResC);
 		
 		Bundle mybundle;
         mybundle = myfrag.getArguments();
@@ -345,7 +345,7 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
 		
 		if(ReqC == TAKE_PHOTO_CODE && ResC == RESULT_OK)
 		{
-			
+			Log.i("vie","Made It to Result OK");
 			//add photopath to database
 			int photocount = 0;
 			String photopath = null;
@@ -438,7 +438,7 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
 
       Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE); 
       cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
-      startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);
+      getActivity().startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);
 	}
 	
 	public int getachphotocount()
@@ -484,7 +484,7 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
 		myDB.delete_achievement(achkey);
 		myDB.close();    
 		
-		getFragmentManager().popBackStackImmediate();
+		mActivity.onBackPressed();
 
 	}
 	

@@ -35,7 +35,7 @@ import android.content.Intent;
 import android.graphics.Color;
 
 
-public class Friend_Add_Achievement_Fragment extends SherlockFragment {
+public class Friend_Add_Achievement_Fragment extends BaseFragment {
 
 	int myyear,mymonth,myday,myhour,mymin;
 	View view;
@@ -160,7 +160,7 @@ public class Friend_Add_Achievement_Fragment extends SherlockFragment {
 		
 			myDB.close();
 		
-			getFragmentManager().popBackStackImmediate();
+			mActivity.onBackPressed();     
 			
 	    }
 	    else if(date.isEnabled() == false && myRPerson.isChecked() == true)
@@ -172,7 +172,7 @@ public class Friend_Add_Achievement_Fragment extends SherlockFragment {
 		
 			myDB.close();
 		
-			getFragmentManager().popBackStackImmediate();
+			mActivity.onBackPressed();     
 			
 	    }
 	    else if(date.isEnabled() == true && myRPerson.isChecked() == false)
@@ -184,7 +184,7 @@ public class Friend_Add_Achievement_Fragment extends SherlockFragment {
 		
 			myDB.close();
 		
-			getFragmentManager().popBackStackImmediate();
+			mActivity.onBackPressed();     
 			
 	    }
 	    else
@@ -195,7 +195,7 @@ public class Friend_Add_Achievement_Fragment extends SherlockFragment {
 		
 			myDB.close();
 		
-			getFragmentManager().popBackStackImmediate();
+			mActivity.onBackPressed();     
 			
 	    }
 	    

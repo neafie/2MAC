@@ -11,7 +11,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class PersonalPage1 extends SherlockFragment {
+public class PersonalPage1 extends BaseFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
