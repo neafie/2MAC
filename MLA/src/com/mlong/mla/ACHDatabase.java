@@ -24,7 +24,7 @@ public class ACHDatabase {
     public final static String COLUMN_POINTS = "points";
     public final static String COLUMN_GENRE = "genre";
     public final static String COLUMN_ISCOMPLETED = "completed";
-    public final static String COLUMN_ICON = "icon";
+    public final static String COLUMN_ICON = "iconpath";
     public final static String COLUMN_TIMEFRAME = "timeframe";
     public final static String COLUMN_NUMBEROFCOMP = "numberofcomp";
     public final static String COLUMN_NUMBERTOCOMP = "numbertocomp";
@@ -69,7 +69,7 @@ public class ACHDatabase {
                     COLUMN_PHOTOPATH + " TEXT, " +
                     COLUMN_PHOTOCOUNT + " INTEGER, " +
                     COLUMN_FIRSTTOCOMP + " INTEGER, " +
-                    COLUMN_ICON + " INTEGER);"
+                    COLUMN_ICON + " TEXT);"
             );
                 
                 db.execSQL(" CREATE TABLE " + TABLE_KEYTABLE + " (" +
@@ -151,7 +151,7 @@ public class ACHDatabase {
     
     public Cursor achievementQuery(int mykey)
     {
-    	final String MY_QUERY = "SELECT " + COLUMN_ACHKEY + "," + COLUMN_ACHNAME +"," + COLUMN_DESCRIPTION + "," + COLUMN_ISCOMPLETED + "," + COLUMN_TIMEFRAME + " FROM " + TABLE_ACHESTABLE + " WHERE " + COLUMN_FOR + " = " + mykey;
+    	final String MY_QUERY = "SELECT " + COLUMN_ACHKEY + "," + COLUMN_ACHNAME +"," + COLUMN_DESCRIPTION + "," + COLUMN_ISCOMPLETED + "," + COLUMN_TIMEFRAME + "," + COLUMN_ICON + " FROM " + TABLE_ACHESTABLE + " WHERE " + COLUMN_FOR + " = " + mykey;
 
     	ourcursor = ourDatabase.rawQuery(MY_QUERY, null);
     	

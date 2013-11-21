@@ -28,7 +28,7 @@
     <string name="title_activity_count_down">CountDown</string>
     <string name="title_activity_my_file_content_provider">MyFileContentProvider</string>
     <string name="title_activity_achievment_page">AchievmentPage</string>
-    <string name="title_activity_my_tab">MyTabActivity</string>
+    <string name="title_activity_my_tab">Vie</string>
     <string name="title_activity_community_page1">CommunityPage1</string>
     <string name="title_activity_personal_page1">PersonalPage1</string>
     <string name="title_activity_fragment_view_group">FragmentViewGroup</string>

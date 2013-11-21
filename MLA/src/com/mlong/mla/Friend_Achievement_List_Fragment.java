@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.StringTokenizer;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.mlong.mla.AchItems.Item;
 
 import android.content.Intent;
@@ -42,14 +45,17 @@ public class Friend_Achievement_List_Fragment extends BaseFragment {
 	int DELETECODE = 4;
 	int RESULT_CANCELED = 0;
 	View view;
-	
+	MenuItem deleteList;
 		
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 		
 		view = inflater.inflate(R.layout.activity_ach_list, container, false);
-	
+		setHasOptionsMenu(true);
+		
+		AppConstants.icon = null;
+		
 		Button b_addach = (Button) view.findViewById(R.id.buttonmyach);
 		ACHDatabase myDB = new ACHDatabase(getActivity());
 		Cursor cursor;
@@ -83,6 +89,7 @@ public class Friend_Achievement_List_Fragment extends BaseFragment {
     	String mytime = null;
         boolean trophy = false;
         int achkey;
+        String iconpath;
         
         // Check if our result was valid.
 		if(cursor != null) {
@@ -100,6 +107,8 @@ public class Friend_Achievement_List_Fragment extends BaseFragment {
                 		trophy = cursor.getInt(cursor.getColumnIndex(myDB.COLUMN_ISCOMPLETED))>0;
                 		time = cursor.getLong(cursor.getColumnIndex(myDB.COLUMN_TIMEFRAME));
                 		achkey = cursor.getInt(cursor.getColumnIndex(myDB.COLUMN_ACHKEY));
+                		iconpath = cursor.getString(cursor.getColumnIndex(myDB.COLUMN_ICON));
+                		
                 		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm"); 
                 		String dateString = formatter.format(new Date(time));
                 		
@@ -120,6 +129,7 @@ public class Friend_Achievement_List_Fragment extends BaseFragment {
                 		myitem.setDate(mydate);
                 		myitem.setTime(mytime);
                 		myitem.setAchkey(achkey);
+                		myitem.setIconPath(iconpath);
                 		if(dateString.compareTo("12/31/1969 19:00") == 0)
                 		{
                 			myitem.setDate("");
@@ -141,21 +151,51 @@ public class Friend_Achievement_List_Fragment extends BaseFragment {
 		cursor.close();
         myDB.close();		
         
-        Button b_deletelist = (Button) view.findViewById(R.id.button2);
-        b_deletelist.setOnClickListener(new View.OnClickListener() {
+        Button b_addContacts = (Button) view.findViewById(R.id.button2);
+        b_addContacts.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	ACHDatabase myDB = new ACHDatabase(getActivity());
-        		myDB.open();
-        		myDB.delete_list(key);
-        		myDB.close();
-
-        		mActivity.onBackPressed();            	
+            	Fragment newFragment = new Friend_Contact_List();
+               
+                mActivity.pushFragments(AppConstants.TAB_F, newFragment,true,true);
+            	
             }
            
         });
         
         
         return view;
+	}
+	
+	
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+	    // TODO Add your menu entries here
+		deleteList = menu.add("Delete List");
+		
+	    super.onCreateOptionsMenu(menu, inflater);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    if (item.getItemId() == deleteList.getItemId()) {	     
+	        // EITHER CALL THE METHOD HERE OR DO THE FUNCTION DIRECTLY
+	        deleteList();
+
+	        return true;
+	    }
+	    else{
+	        return super.onOptionsItemSelected(item);
+	    }
+	}
+	
+	public void deleteList()
+	{
+		ACHDatabase myDB = new ACHDatabase(getActivity());
+		myDB.open();
+		myDB.delete_list(key);
+		myDB.close();
+
+		mActivity.onBackPressed(); 
 	}
 	
 	//When you click on an achievement

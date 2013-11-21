@@ -16,6 +16,7 @@ import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -23,16 +24,20 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 
 
 public class Friend_Add_Achievement_Fragment extends BaseFragment {
@@ -51,6 +56,23 @@ public class Friend_Add_Achievement_Fragment extends BaseFragment {
 		
 		Button date = (Button) view.findViewById(R.id.b_dpick);
 		Button time = (Button) view.findViewById(R.id.b_tpick);
+		Button icon = (Button) view.findViewById(R.id.buttonicon);
+		ImageView iconview = (ImageView) view.findViewById(R.id.iv_icon);
+		
+		
+		String uri = AppConstants.icon;
+		
+		if(uri != null)
+		{
+			int id = getResources().getIdentifier("com.mlong.mla:drawable/" + uri+"black", null, null);
+			if(id != 0)
+			{
+				Drawable res = getResources().getDrawable(id);
+				iconview.setImageDrawable(res);	
+			}
+		}
+		
+		icon.setOnClickListener(listener);
 		
 		date.setEnabled(false);
 		time.setEnabled(false);
@@ -58,7 +80,17 @@ public class Friend_Add_Achievement_Fragment extends BaseFragment {
 		return view;
 	}
 
-
+	private OnClickListener listener = new View.OnClickListener() {
+        @Override
+    	public void onClick(View v) {   
+            
+            Fragment newFragment = new Friend_Icon_Page();
+  
+            mActivity.pushFragments(AppConstants.TAB_F, newFragment,true,true);
+    		
+        }
+      
+    };
 	
 
 	public void AddAch(View myV)
@@ -77,7 +109,7 @@ public class Friend_Add_Achievement_Fragment extends BaseFragment {
 	     
 	     if((my_name.getText().toString().equals("") 
 					|| my_desc.getText().toString().equals("") || my_point.getText().toString().equals("")
-					|| Integer.parseInt(my_numb.getText().toString()) < 1
+					|| Integer.parseInt(my_numb.getText().toString()) < 1 || AppConstants.icon == null
 					|| my_numb.getText().toString().equals("")) || ((mydate.getText().toString().equals("")
 					|| mytime.getText().toString().equals("")) && date.isEnabled() == true))
 			{
@@ -85,7 +117,7 @@ public class Friend_Add_Achievement_Fragment extends BaseFragment {
 			}
 	     else if ((my_name.getText().toString().equals("") 
 					|| my_desc.getText().toString().equals("") || my_point.getText().toString().equals("")
-					|| Integer.parseInt(my_numb.getText().toString()) < 1
+					|| Integer.parseInt(my_numb.getText().toString()) < 1 || AppConstants.icon == null
 					|| my_numb.getText().toString().equals("")) && date.isEnabled() == false)
 	     {
 	    	 Toast.makeText(getActivity(), "You must complete all fields", Toast.LENGTH_SHORT).show(); 
@@ -156,7 +188,7 @@ public class Friend_Add_Achievement_Fragment extends BaseFragment {
 		
 			myDB.open();
 		
-			myDB.createInsert(key, my_name.getText().toString(), randkey, Integer.parseInt(my_point.getText().toString()), null, user_date, Integer.parseInt(my_numb.getText().toString()), my_desc.getText().toString(), 1,null);
+			myDB.createInsert(key, my_name.getText().toString(), randkey, Integer.parseInt(my_point.getText().toString()), null, user_date, Integer.parseInt(my_numb.getText().toString()), my_desc.getText().toString(), 1, AppConstants.icon);
 		
 			myDB.close();
 		
@@ -168,7 +200,7 @@ public class Friend_Add_Achievement_Fragment extends BaseFragment {
 			
 			myDB.open();
 		
-			myDB.createInsert(key, my_name.getText().toString(), randkey, Integer.parseInt(my_point.getText().toString()), null, 0, Integer.parseInt(my_numb.getText().toString()), my_desc.getText().toString(), 1,null);
+			myDB.createInsert(key, my_name.getText().toString(), randkey, Integer.parseInt(my_point.getText().toString()), null, 0, Integer.parseInt(my_numb.getText().toString()), my_desc.getText().toString(), 1, AppConstants.icon);
 		
 			myDB.close();
 		
@@ -180,7 +212,7 @@ public class Friend_Add_Achievement_Fragment extends BaseFragment {
 			
 			myDB.open();
 		
-			myDB.createInsert(key, my_name.getText().toString(), randkey, Integer.parseInt(my_point.getText().toString()), null, user_date, Integer.parseInt(my_numb.getText().toString()), my_desc.getText().toString(), 0,null);
+			myDB.createInsert(key, my_name.getText().toString(), randkey, Integer.parseInt(my_point.getText().toString()), null, user_date, Integer.parseInt(my_numb.getText().toString()), my_desc.getText().toString(), 0, AppConstants.icon);
 		
 			myDB.close();
 		
@@ -191,7 +223,7 @@ public class Friend_Add_Achievement_Fragment extends BaseFragment {
 	    {
 	    	myDB.open();
 			
-			myDB.createInsert(key, my_name.getText().toString(), randkey, Integer.parseInt(my_point.getText().toString()), null, 0, Integer.parseInt(my_numb.getText().toString()), my_desc.getText().toString(), 0,null);
+			myDB.createInsert(key, my_name.getText().toString(), randkey, Integer.parseInt(my_point.getText().toString()), null, 0, Integer.parseInt(my_numb.getText().toString()), my_desc.getText().toString(), 0, AppConstants.icon);
 		
 			myDB.close();
 		
@@ -285,11 +317,6 @@ public class Friend_Add_Achievement_Fragment extends BaseFragment {
 			myRPerson.setChecked(false);
 			ischecked = false;
 		}
-	}
-	
-	public void addIcon(View v)
-	{
-		
 	}
 	
 }

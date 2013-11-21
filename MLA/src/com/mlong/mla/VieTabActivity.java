@@ -5,10 +5,8 @@ package com.mlong.mla;
 import java.util.HashMap;
 import java.util.Stack;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.ActionBar.Tab;
-import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Window;
 import com.mlong.mla.AddDialog.NoticeDialogListener;
 
 import android.app.TimePickerDialog;
@@ -20,10 +18,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TimePicker;
 
@@ -53,10 +49,11 @@ OnDateSetListener,TimePickerDialog.OnTimeSetListener{
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-    	
+    	//removes title bar at top
+    	requestWindowFeature(Window.FEATURE_NO_TITLE);
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_tab);
-        
+     
         mStacks             =   new HashMap<String, Stack<Fragment>>();
         mStacks.put(AppConstants.TAB_P, new Stack<Fragment>());
         mStacks.put(AppConstants.TAB_C, new Stack<Fragment>());

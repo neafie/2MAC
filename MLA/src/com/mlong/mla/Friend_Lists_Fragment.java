@@ -36,7 +36,6 @@ public class Friend_Lists_Fragment extends BaseFragment
  	private ListCustomListview m_adapter;
    
     int REMOVE;
-    List<Integer> myint = new ArrayList<Integer>();
     
     @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

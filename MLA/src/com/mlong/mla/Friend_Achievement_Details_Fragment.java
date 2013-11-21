@@ -229,16 +229,9 @@ public class Friend_Achievement_Details_Fragment extends BaseFragment {
     			
     	        Bundle mybundle;
     	        mybundle = myfrag.getArguments();
-    			
-    			
-    			
+		
     			int ofcomp = mybundle.getInt("ofcomp", 0);
     			int achkey = mybundle.getInt("achkey",0);
-    			
-    			//Bundle mybundle = getArguments();
-    			//comp2 = mybundle.getInt("ofcomp");
-    			//int comp = mybundle.getInt("comp");
-    			//int achkey = mybundle.getInt("achkey");
     			
     			long usertime = 0;
             	long currtime;
@@ -345,7 +338,6 @@ public class Friend_Achievement_Details_Fragment extends BaseFragment {
 		
 		if(ReqC == TAKE_PHOTO_CODE && ResC == RESULT_OK)
 		{
-			Log.i("vie","Made It to Result OK");
 			//add photopath to database
 			int photocount = 0;
 			String photopath = null;
