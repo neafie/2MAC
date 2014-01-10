@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".ContactsCustomListview" >
+
+   <TextView
+       android:id="@+id/listmiddletext"
+       android:layout_width="wrap_content"
+       android:layout_height="26dip"
+       android:layout_alignLeft="@+id/listtoptext"
+       android:layout_below="@+id/listtoptext"
+       android:gravity="center_vertical"
+       android:text="Description" />
+
+   <TextView
+       android:id="@+id/listtoptext"
+       android:layout_width="wrap_content"
+       android:layout_height="26dip"
+       android:layout_alignParentTop="true"
+       android:layout_marginLeft="14dp"
+       android:layout_toRightOf="@+id/checkBox1"
+       android:ellipsize="marquee"
+       android:singleLine="true"
+       android:text="Name"
+       android:textStyle="bold" />
+
+   <CheckBox
+       android:id="@+id/checkBox1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignBaseline="@+id/listtoptext"
+       android:layout_alignBottom="@+id/listtoptext"
+       android:layout_alignParentLeft="true"
+       android:focusable="false" />
+
+</RelativeLayout>

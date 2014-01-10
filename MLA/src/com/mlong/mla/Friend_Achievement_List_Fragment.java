@@ -68,6 +68,7 @@ public class Friend_Achievement_List_Fragment extends BaseFragment {
         m_adapter = new AchCustomListview(getActivity(), R.layout.activity_achcustom_listview, m_parts);
         AList.setAdapter(m_adapter);
         m_parts.clear();
+        
         b_addach.setOnClickListener(otherlistener);
         AList.setOnItemClickListener(listener);
         
@@ -151,11 +152,13 @@ public class Friend_Achievement_List_Fragment extends BaseFragment {
 		cursor.close();
         myDB.close();		
         
-        Button b_addContacts = (Button) view.findViewById(R.id.button2);
-        b_addContacts.setOnClickListener(new View.OnClickListener() {
+        Button b_findContacts = (Button) view.findViewById(R.id.button2);
+        b_findContacts.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	Fragment newFragment = new Friend_Contact_List();
-               
+            	Bundle mybundle = new Bundle();
+            	mybundle.putInt("listkey", key);
+            	newFragment.setArguments(mybundle);
                 mActivity.pushFragments(AppConstants.TAB_F, newFragment,true,true);
             	
             }

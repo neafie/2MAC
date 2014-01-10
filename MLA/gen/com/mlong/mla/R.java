@@ -980,7 +980,8 @@ containing a value of this type.
         public static final int abs__title=0x7f05001b;
         public static final int abs__up=0x7f05000b;
         public static final int achtotal=0x7f050034;
-        public static final int action_settings=0x7f050071;
+        public static final int action_settings=0x7f050073;
+        public static final int b_addContacts=0x7f050067;
         public static final int b_addcomp=0x7f050047;
         public static final int b_addphoto=0x7f05004a;
         public static final int b_dpick=0x7f05005f;
@@ -990,7 +991,8 @@ containing a value of this type.
         public static final int buttonach=0x7f050065;
         public static final int buttonicon=0x7f050063;
         public static final int buttonmyach=0x7f050032;
-        public static final int delete_list=0x7f050072;
+        public static final int checkBox1=0x7f050066;
+        public static final int delete_list=0x7f050074;
         public static final int disableHome=0x7f050009;
         public static final int edit_query=0x7f050026;
         public static final int et_aname=0x7f05004f;
@@ -1000,17 +1002,17 @@ containing a value of this type.
         public static final int et_points=0x7f05005a;
         public static final int gotopage2=0x7f050053;
         public static final int homeAsUp=0x7f050006;
-        public static final int icon_cup=0x7f050066;
-        public static final int icon_fish=0x7f050067;
-        public static final int icon_footprints=0x7f050068;
-        public static final int icon_fork=0x7f050069;
-        public static final int icon_hammer=0x7f05006a;
-        public static final int icon_pretzel=0x7f05006b;
-        public static final int icon_quill=0x7f05006c;
-        public static final int icon_rocket=0x7f05006d;
-        public static final int icon_spaceship=0x7f05006e;
-        public static final int icon_tree=0x7f05006f;
-        public static final int icon_turtle=0x7f050070;
+        public static final int icon_cup=0x7f050068;
+        public static final int icon_fish=0x7f050069;
+        public static final int icon_footprints=0x7f05006a;
+        public static final int icon_fork=0x7f05006b;
+        public static final int icon_hammer=0x7f05006c;
+        public static final int icon_pretzel=0x7f05006d;
+        public static final int icon_quill=0x7f05006e;
+        public static final int icon_rocket=0x7f05006f;
+        public static final int icon_spaceship=0x7f050070;
+        public static final int icon_tree=0x7f050071;
+        public static final int icon_turtle=0x7f050072;
         public static final int imageView1=0x7f05003a;
         public static final int iv_icon=0x7f050064;
         public static final int iv_photo=0x7f05004b;
@@ -1092,11 +1094,12 @@ containing a value of this type.
         public static final int activity_my_tab=0x7f03001d;
         public static final int activity_personal_page1=0x7f03001e;
         public static final int add_ach=0x7f03001f;
-        public static final int fragment_community_page2=0x7f030020;
-        public static final int fragment_friend__contact__list=0x7f030021;
-        public static final int fragment_friend__icon__page=0x7f030022;
-        public static final int sherlock_spinner_dropdown_item=0x7f030023;
-        public static final int sherlock_spinner_item=0x7f030024;
+        public static final int contacts_listview=0x7f030020;
+        public static final int fragment_community_page2=0x7f030021;
+        public static final int fragment_friend__contact__list=0x7f030022;
+        public static final int fragment_friend__icon__page=0x7f030023;
+        public static final int sherlock_spinner_dropdown_item=0x7f030024;
+        public static final int sherlock_spinner_item=0x7f030025;
     }
     public static final class menu {
         public static final int achdatabase=0x7f0c0000;
