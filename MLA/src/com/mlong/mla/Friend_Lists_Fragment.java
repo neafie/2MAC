@@ -18,15 +18,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class Friend_Lists_Fragment extends BaseFragment 
+public class Friend_Lists_Fragment extends SherlockFragment 
 	{
 
 	public final static String MESSAGE = "com.mlong.mla";
@@ -36,6 +34,7 @@ public class Friend_Lists_Fragment extends BaseFragment
  	private ListCustomListview m_adapter;
    
     int REMOVE;
+    List<Integer> myint = new ArrayList<Integer>();
     
     @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,8 +53,7 @@ public class Friend_Lists_Fragment extends BaseFragment
         myList.setAdapter(m_adapter);
 		
 		m_parts.clear();
-		myList.setOnItemClickListener(listener);
-
+        
 		ACHDatabase myDB = new ACHDatabase(getActivity());
 		Cursor cursor;
 		myDB.open();
@@ -90,7 +88,37 @@ public class Friend_Lists_Fragment extends BaseFragment
         cursor.close();
         myDB.close();
 		
-       
+		myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                    long arg3) {
+                // TODO Auto-generated method stub
+                
+                ListItem myitem = new ListItem();
+            	myitem = m_parts.get(arg2);
+                
+                REMOVE = arg2;
+            	
+                //gets list key from list
+ 
+            	int listkey = myitem.getListkey();
+            	
+            	Bundle mybundle = new Bundle();   
+                mybundle.putInt("listkey", listkey);
+                
+                
+                Fragment newFragment = new Friend_Achievement_List_Fragment();
+                newFragment.setArguments(mybundle);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                
+                transaction.replace(R.id.realtabcontent, newFragment, "friends");
+                transaction.addToBackStack(null);
+ 
+                // Commit the transaction
+                transaction.commit();
+            }
+        });
 		
 		AddList.setOnClickListener(
 		        new View.OnClickListener() {
@@ -105,33 +133,19 @@ public class Friend_Lists_Fragment extends BaseFragment
 		
 		return view;
 	}
-    
-    private OnItemClickListener listener =  new AdapterView.OnItemClickListener() {
 
-        @Override
-        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-                long arg3) {
-            // TODO Auto-generated method stub
-            
-            ListItem myitem = new ListItem();
-        	myitem = m_parts.get(arg2);
-            
-            REMOVE = arg2;
-        	
-            //gets list key from list
-
-        	int listkey = myitem.getListkey();
-        	
-        	Bundle mybundle = new Bundle();
-            mybundle.putInt("listkey", listkey);
-
-            Fragment newFragment = new Friend_Achievement_List_Fragment();
-            newFragment.setArguments(mybundle);
-            
-            mActivity.pushFragments(AppConstants.TAB_F, newFragment,true,true);
-           
-        }
-    };
+    @Override 
+	public void onCreate(Bundle savedInstanceState) { 
+	        super.onCreate(savedInstanceState);
+	
+    }
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+	    super.onActivityCreated(savedInstanceState);
+	    
+	    
+	    
+	}
 	
 	public void sendMessage(View myV)
 	{

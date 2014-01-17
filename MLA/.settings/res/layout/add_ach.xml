@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent" >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView 
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/tv_fname"
+       android:gravity="left"
+       android:text="Achievement Name"
+       android:textSize="20sp"
+       />
+    
+    <EditText
+        android:id="@+id/et_aname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textCapWords" />
+	    
+   <TextView 
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/tv_desc"
+       android:gravity="left"
+       android:text="Description"
+       android:textSize="20sp"
+       />
+  
+  <EditText
+       android:id="@+id/et_desc"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:ems="10"
+       android:inputType="textCapSentences"
+       android:layout_weight="1"
+       >
+	
+   </EditText>
+   
+   <TextView 
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/tv_points"
+       android:gravity="left"
+       android:text="Points"
+       android:textSize="20sp"
+       />
+  
+   <EditText
+       android:id="@+id/et_points"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:ems="10"
+       android:inputType="number|numberSigned"
+       android:layout_weight="1"
+       >
+	
+       
+       
+   </EditText>
+
+   <TextView 
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/tv_numb"
+       android:gravity="left"
+       android:text="Completions Needed"
+       android:textSize="20sp"
+       />
+  
+  <EditText
+       android:id="@+id/et_numb"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:ems="10"
+       android:inputType="number"
+       android:layout_weight="1"
+       >
+	
+
+   </EditText>
+
+  <RadioButton
+      android:id="@+id/radioButton2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="One Person Complete"
+      android:onClick="onePerson" 
+      />
+
+  <RadioButton
+      android:id="@+id/radioButton1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="RadioClick"
+      android:text="Set a Date and Time" />
+      
+   <Button 
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/b_dpick"
+       android:text="Pick Date"
+       android:onClick="myPickDate"
+       />
+   
+    <TextView 
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/tv_myDate"
+       android:gravity="left"
+       android:textSize="20sp"
+       />
+
+   <Button
+       android:id="@+id/b_tpick"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Pick Time"
+       android:onClick="myPickTime" 
+       />
+
+   <TextView 
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/tv_myTime"
+       android:gravity="left"
+       android:textSize="20sp"
+       />
+
+   <Button
+       android:id="@+id/buttonicon"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Add Icon" 
+       android:onClick="addIcon"
+       />
+
+   <ImageView
+       android:id="@+id/iv_icon"
+       android:layout_width="50dp"
+       android:layout_height="50dp"
+        />
+   
+       <Button
+           android:id="@+id/buttonach"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:onClick="AddAch"
+           android:text="Add Achievement" />
+       
+</LinearLayout>
+</ScrollView>

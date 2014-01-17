@@ -1,36 +1,32 @@
 package com.mlong.mla;
 
+import com.actionbarsherlock.app.SherlockFragment;
 
 import android.os.Bundle;
+import android.app.Activity;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-public class CommunityPage1 extends BaseFragment {
+public class CommunityPage1 extends SherlockFragment {
 
-	View view;
-	private Button mGotoButton;
-	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 		//setContentView(R.layout.activity_personal_page1);
-		view = inflater.inflate(R.layout.activity_community_page1, container, false);
-		
-		 mGotoButton =   (Button) view.findViewById(R.id.gotopage2);
-	     mGotoButton.setOnClickListener(listener);
-		
-		return view;
+		return inflater.inflate(R.layout.activity_community_page1, container, false);
 	}
 	
-	private OnClickListener listener       =   new View.OnClickListener(){
-        @Override
-        public void onClick(View v){
-            /* Go to next fragment in navigation stack*/
-            mActivity.pushFragments(AppConstants.TAB_C, new CommunityPage2(),true,true);
-        }
-    };
+	/*@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.community_page1, menu);
+		return true;
+	}*/
+
+	
+	
 	
 }

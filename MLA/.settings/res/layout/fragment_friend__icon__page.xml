@@ -1,0 +1,106 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".Friend_Icon_Page" >
+
+    <ImageView
+        android:id="@+id/icon_cup"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/cup_black" />
+
+    <ImageView
+        android:id="@+id/icon_fish"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/icon_cup"
+        android:layout_marginLeft="21dp"
+        android:layout_toRightOf="@+id/icon_cup"
+        android:src="@drawable/fish_black" />
+
+    <ImageView
+        android:id="@+id/icon_footprints"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/icon_fish"
+        android:layout_marginLeft="24dp"
+        android:layout_toRightOf="@+id/icon_fish"
+        android:src="@drawable/footprints_black" />
+
+    <ImageView
+        android:id="@+id/icon_fork"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/icon_footprints"
+        android:layout_marginLeft="24dp"
+        android:layout_toRightOf="@+id/icon_footprints"
+        android:src="@drawable/fork_black" />
+
+    <ImageView
+        android:id="@+id/icon_hammer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignRight="@+id/icon_cup"
+        android:layout_below="@+id/icon_cup"
+        android:layout_marginTop="18dp"
+        android:src="@drawable/hammer_black" />
+
+    <ImageView
+        android:id="@+id/icon_pretzel"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/icon_hammer"
+        android:layout_toLeftOf="@+id/icon_footprints"
+        android:src="@drawable/pretzel_black" />
+
+    <ImageView
+        android:id="@+id/icon_quill"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/icon_footprints"
+        android:layout_alignTop="@+id/icon_pretzel"
+        android:src="@drawable/quill_black" />
+
+    <ImageView
+        android:id="@+id/icon_rocket"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/icon_fork"
+        android:layout_alignTop="@+id/icon_quill"
+        android:src="@drawable/rocket_black" />
+
+    <ImageView
+        android:id="@+id/icon_spaceship"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/icon_hammer"
+        android:layout_marginTop="16dp"
+        android:layout_toLeftOf="@+id/icon_fish"
+        android:src="@drawable/spaceship_black" />
+
+    <ImageView
+        android:id="@+id/icon_tree"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/icon_pretzel"
+        android:layout_alignTop="@+id/icon_spaceship"
+        android:src="@drawable/tree_black" />
+
+    
+
+	    <ImageView
+	        android:id="@+id/icon_turtle"
+	        android:layout_width="50dp"
+	        android:layout_height="50dp"
+	        android:layout_alignTop="@+id/icon_tree"
+	        android:layout_toLeftOf="@+id/icon_fork"
+	        android:src="@drawable/turtle_black" />
+
+    </RelativeLayout>

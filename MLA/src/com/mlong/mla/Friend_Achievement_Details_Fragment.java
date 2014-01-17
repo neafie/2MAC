@@ -25,11 +25,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Friend_Achievement_Details_Fragment extends BaseFragment {
+public class Friend_Achievement_Details_Fragment extends SherlockFragment {
 
 	boolean iscomplete = false;
 	String dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/ViePics/"; 
-	int TAKE_PHOTO_CODE = 1337;
+	int TAKE_PHOTO_CODE = 0;
 	int DELETECODE = 4;
 	Bundle mybundle = new Bundle();
 	View view;
@@ -229,9 +229,16 @@ public class Friend_Achievement_Details_Fragment extends BaseFragment {
     			
     	        Bundle mybundle;
     	        mybundle = myfrag.getArguments();
-		
+    			
+    			
+    			
     			int ofcomp = mybundle.getInt("ofcomp", 0);
     			int achkey = mybundle.getInt("achkey",0);
+    			
+    			//Bundle mybundle = getArguments();
+    			//comp2 = mybundle.getInt("ofcomp");
+    			//int comp = mybundle.getInt("comp");
+    			//int achkey = mybundle.getInt("achkey");
     			
     			long usertime = 0;
             	long currtime;
@@ -326,7 +333,7 @@ public class Friend_Achievement_Details_Fragment extends BaseFragment {
 	
 	public void onActivityResult(int ReqC, int ResC, Intent data)
 	{
-		Log.i("vie","Made It to Activity Result, ReqC =  " + ReqC + " and ResC = " + ResC);
+		//Intent intent = getIntent();
 		
 		Bundle mybundle;
         mybundle = myfrag.getArguments();
@@ -338,6 +345,7 @@ public class Friend_Achievement_Details_Fragment extends BaseFragment {
 		
 		if(ReqC == TAKE_PHOTO_CODE && ResC == RESULT_OK)
 		{
+			
 			//add photopath to database
 			int photocount = 0;
 			String photopath = null;
@@ -430,7 +438,7 @@ public class Friend_Achievement_Details_Fragment extends BaseFragment {
 
       Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE); 
       cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
-      getActivity().startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);
+      startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);
 	}
 	
 	public int getachphotocount()
@@ -476,7 +484,7 @@ public class Friend_Achievement_Details_Fragment extends BaseFragment {
 		myDB.delete_achievement(achkey);
 		myDB.close();    
 		
-		mActivity.onBackPressed();
+		getFragmentManager().popBackStackImmediate();
 
 	}
 	

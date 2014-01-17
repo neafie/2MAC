@@ -8,6 +8,8 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="17" />
 
+    <!-- Allow to connect with internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <permission android:name="com.mlong.mla.provider.permission.READ_PERMISSION" >
     </permission>
     <permission android:name="com.mlong.mla.provider.permission.WRITE_PERMISSION" >
@@ -15,18 +17,43 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" >
     </uses-feature>
 
-    <application
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+    <application android:allowBackup="true" android:icon="@drawable/vie_logo" android:label="@string/app_name" android:theme="@style/Theme.Vie">
+        
+        <!-- Splash screen -->
+        <activity
+            android:name="com.mlong.mla.SplashScreen"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+ 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+         <activity
+            android:label="@string/app_name"
+            android:name="com.mlong.mla.DashboardActivity" >    
+        </activity>
+        
+        <!-- Login screen -->
+        <activity android:name="com.mlong.mla.LoginActivity"
+                  android:label="Login to your Account"
+                  android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+ 
+        <!--  Entry for RegisterActivity.class -->
+        <activity android:name="com.mlong.mla.RegisterActivity"
+                  android:label="Register New Account"
+                  android:theme="@android:style/Theme.Black.NoTitleBar" ></activity>
+        
         <activity
             android:name="com.mlong.mla.Friend_Add_Achievement_Fragment"
             android:label="@string/title_activity_add_list"
@@ -44,15 +71,14 @@
             android:name="com.mlong.mla.Friend_Achievement_Details_Fragment"
             android:label="@string/title_activity_achievment_page" >
         </activity>
+        
+        <!-- Launch this  -->
         <activity
             android:name="com.mlong.mla.VieTabActivity"
-            android:label="@string/title_activity_my_tab" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:label="@string/title_activity_my_tab" 
+            android:uiOptions="splitActionBarWhenNarrow">    
         </activity>
+        
         <activity
             android:name="com.mlong.mla.FragmentViewGroup"
             android:label="@string/title_activity_fragment_view_group" >

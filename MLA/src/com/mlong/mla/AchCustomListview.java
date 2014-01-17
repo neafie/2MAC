@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import com.mlong.mla.AchItems.Item;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,7 +77,7 @@ public class AchCustomListview extends ArrayAdapter<Item> {
 			imageView.setImageDrawable(res);
 			
 			*/
-			String icon = null;
+			
 			
 			if (tt != null){
 				tt.setText(i.getName());
@@ -86,35 +85,13 @@ public class AchCustomListview extends ArrayAdapter<Item> {
 			if (mt != null){
 				mt.setText(i.getDescription());
 			}
-			
-			if(trophy != null)
+			if (i.getcomplete() == true)
 			{
-				icon = i.getIconPath();
-			}
-			
-			if (i.getcomplete() == true && icon != null)
-			{
-				int id = getContext().getResources().getIdentifier("com.mlong.mla:drawable/" + icon+"black", null, null);
-				if(id != 0)
-				{
-					Drawable res = getContext().getResources().getDrawable(id);
-					trophy.setImageDrawable(res);	
-				}
 				
-				
-				//trophy.setImageResource(R.drawable.turtle_black);
+				trophy.setImageResource(R.drawable.rocket_active);
 			}
 			else
-			{
-				int id = getContext().getResources().getIdentifier("com.mlong.mla:drawable/" + icon+"gray", null, null);
-				if(id != 0)
-				{
-					Drawable res = getContext().getResources().getDrawable(id);
-					trophy.setImageDrawable(res);
-					//trophy.setImageResource(R.drawable.turtle_gray);	
-				}
-			}
-				
+				trophy.setImageResource(R.drawable.gonna_work_fo_sho);	
 			if (ld != null){
 				ld.setText(i.getDate());
 			}

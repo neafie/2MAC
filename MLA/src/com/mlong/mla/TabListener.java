@@ -34,8 +34,7 @@ public class TabListener extends SherlockFragment implements com.actionbarsherlo
         if (preInitializedFragment == null) {
             mFragment = (SherlockFragment) SherlockFragment.instantiate(mActivity, mClass.getName());
             ft.add(R.id.realtabcontent, mFragment, mTag);
-        } else /*if(preInitializedFragment.getTag().contentEquals(mFragment.getTag())) */{
-        	
+        } else {
             ft.attach(preInitializedFragment);
         }
     	
