@@ -14,8 +14,9 @@ public class ACHDatabase {
     
 	public final static String TABLE_ACHESTABLE = "userstable";
     public final static String TABLE_KEYTABLE = "keytable";
+    public final static String TABLE_PHONETABLE = "phonetable";
    
-    public final static String COLUMN_FOR = "key";
+    public final static String COLUMN_FOR = "listkey";
     public final static String COLUMN_LISTNAME = "listname";
     public final static String COLUMN_LISTDESC = "listdesc";
     
@@ -24,7 +25,7 @@ public class ACHDatabase {
     public final static String COLUMN_POINTS = "points";
     public final static String COLUMN_GENRE = "genre";
     public final static String COLUMN_ISCOMPLETED = "completed";
-    public final static String COLUMN_ICON = "icon";
+    public final static String COLUMN_ICON = "iconpath";
     public final static String COLUMN_TIMEFRAME = "timeframe";
     public final static String COLUMN_NUMBEROFCOMP = "numberofcomp";
     public final static String COLUMN_NUMBERTOCOMP = "numbertocomp";
@@ -34,7 +35,11 @@ public class ACHDatabase {
     public final static String COLUMN_PHOTOCOUNT = "photocount";
     public final static String COLUMN_FIRSTTOCOMP = "firsttocomp";
     
-    private static final int DATABASE_VERSION = 1;
+    public final static String COLUMN_PHONENUMBER = "phonenumber";
+    public final static String COLUMN_PHONENAME = "phonename";
+    public final static String COLUMN_PHONEID = "phoneid";
+    
+    private static final int DATABASE_VERSION = 3;
 
     private DbHelper ourHelper;
     private final Context ourContext;
@@ -69,13 +74,20 @@ public class ACHDatabase {
                     COLUMN_PHOTOPATH + " TEXT, " +
                     COLUMN_PHOTOCOUNT + " INTEGER, " +
                     COLUMN_FIRSTTOCOMP + " INTEGER, " +
-                    COLUMN_ICON + " INTEGER);"
+                    COLUMN_ICON + " TEXT);"
             );
                 
                 db.execSQL(" CREATE TABLE " + TABLE_KEYTABLE + " (" +
                         COLUMN_FOR + " INTEGER, " +
                         COLUMN_LISTNAME + " TEXT, " +
                         COLUMN_LISTDESC + " TEXT);"
+                        );
+                
+                db.execSQL(" CREATE TABLE " + TABLE_PHONETABLE + " (" +
+                        COLUMN_FOR + " INTEGER, " +
+                        COLUMN_PHONENUMBER + " TEXT, " +
+                        COLUMN_PHONENAME + " TEXT, " +
+                        COLUMN_PHONEID + " INTEGER);"
                         );
                 
         }
@@ -86,6 +98,7 @@ public class ACHDatabase {
 
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACHESTABLE);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_KEYTABLE);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_PHONETABLE);
             onCreate(db);
         }
 
@@ -137,6 +150,16 @@ public class ACHDatabase {
         return ourDatabase.insert(TABLE_KEYTABLE, null, cv);
     }
     
+    public long createPhoneInsert(int key, String phoneNumber, String phoneName, int phoneId) {
+        // TODO Auto-generated method stub
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_FOR, key);
+        cv.put(COLUMN_PHONENUMBER, phoneNumber);
+        cv.put(COLUMN_PHONENAME, phoneName);
+        cv.put(COLUMN_PHONEID, phoneId);
+        return ourDatabase.insert(TABLE_PHONETABLE, null, cv);
+    }
+    
     public Cursor listquery()
     {
     	ourcursor = ourDatabase.rawQuery("SELECT " + COLUMN_LISTNAME +"," + COLUMN_FOR +"," + COLUMN_LISTDESC + " FROM " + TABLE_KEYTABLE, null);
@@ -151,7 +174,7 @@ public class ACHDatabase {
     
     public Cursor achievementQuery(int mykey)
     {
-    	final String MY_QUERY = "SELECT " + COLUMN_ACHKEY + "," + COLUMN_ACHNAME +"," + COLUMN_DESCRIPTION + "," + COLUMN_ISCOMPLETED + "," + COLUMN_TIMEFRAME + " FROM " + TABLE_ACHESTABLE + " WHERE " + COLUMN_FOR + " = " + mykey;
+    	final String MY_QUERY = "SELECT " + COLUMN_ACHKEY + "," + COLUMN_ACHNAME +"," + COLUMN_DESCRIPTION + "," + COLUMN_ISCOMPLETED + "," + COLUMN_TIMEFRAME + "," + COLUMN_ICON + " FROM " + TABLE_ACHESTABLE + " WHERE " + COLUMN_FOR + " = " + mykey;
 
     	ourcursor = ourDatabase.rawQuery(MY_QUERY, null);
     	
@@ -235,6 +258,12 @@ public class ACHDatabase {
     public Cursor getphotopath(int achkey)
     {
     	ourcursor = ourDatabase.rawQuery("SELECT " + COLUMN_PHOTOPATH + " FROM " + TABLE_ACHESTABLE + " WHERE " + COLUMN_ACHKEY + "=" + achkey, null);
+    	return ourcursor;
+    }
+    
+    public Cursor getPhoneId(int listkey)
+    {
+    	ourcursor = ourDatabase.rawQuery("SELECT " + COLUMN_PHONEID + " FROM " + TABLE_PHONETABLE + " WHERE " + COLUMN_FOR + "=" + listkey, null);
     	return ourcursor;
     }
     
