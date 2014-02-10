@@ -45,13 +45,15 @@ public class AddDialog extends DialogFragment {
         builder.setView(inflater.inflate(R.layout.activity_add_dialog, null))
         	   .setMessage(R.string.app_name)
                .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
-                   public void onClick(DialogInterface dialog, int id) {
+                   @Override
+				public void onClick(DialogInterface dialog, int id) {
                 	 
                 	   mListener.onDialogPositiveClick(AddDialog.this);
                    }
                })
                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                   public void onClick(DialogInterface dialog, int id) {
+                   @Override
+				public void onClick(DialogInterface dialog, int id) {
                        // User cancelled the dialog
                 	   mListener.onDialogNegativeClick(AddDialog.this);
                    }

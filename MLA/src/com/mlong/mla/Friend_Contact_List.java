@@ -6,6 +6,7 @@ import com.mlong.mla.ContactItems.ContactItem;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.provider.BaseColumns;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -59,9 +60,9 @@ public class Friend_Contact_List extends BaseFragment {
                      // Loop through all Results
                      do {
                      	//can take out if later when add not null to database
-                     	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_PHONEID)) != null)
+                     	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_PHONEID)) != null)
                      	{
-                     		usedPhoneId.add(cursor.getInt(cursor.getColumnIndex(myDB.COLUMN_PHONEID)));
+                     		usedPhoneId.add(cursor.getInt(cursor.getColumnIndex(ACHDatabase.COLUMN_PHONEID)));
                      	}
                      	
                  } while (cursor.moveToNext());
@@ -88,7 +89,7 @@ public class Friend_Contact_List extends BaseFragment {
                 	ContactItem myitem = new ContactItem();
                 	String Name = cursor2.getString(cursor2.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
                 	String Number = cursor2.getString(cursor2.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                	int iD = cursor2.getInt(cursor2.getColumnIndex(ContactsContract.CommonDataKinds.Phone._ID));
+                	int iD = cursor2.getInt(cursor2.getColumnIndex(BaseColumns._ID));
 	
                 	myitem.setPhoneNumber(Number);
                 	myitem.setName(Name);
@@ -148,7 +149,8 @@ public class Friend_Contact_List extends BaseFragment {
 		
 		Button b_addContacts = (Button) view.findViewById(R.id.b_addContacts);
         b_addContacts.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            @Override
+			public void onClick(View v) {
             	ACHDatabase mydb = new ACHDatabase(getActivity());
             	mydb.open();      	
             	String name;

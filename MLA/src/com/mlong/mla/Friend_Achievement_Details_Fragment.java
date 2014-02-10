@@ -6,8 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Calendar;
 
-import com.actionbarsherlock.app.SherlockFragment;
-
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -25,11 +23,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Friend_Achievement_Details_Fragment extends SherlockFragment {
+public class Friend_Achievement_Details_Fragment extends BaseFragment {
 
 	boolean iscomplete = false;
 	String dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/ViePics/"; 
-	int TAKE_PHOTO_CODE = 0;
+	int TAKE_PHOTO_CODE = 1337;
 	int DELETECODE = 4;
 	Bundle mybundle = new Bundle();
 	View view;
@@ -108,9 +106,9 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
                 // Loop through all Results
                 do {
                 	//can take out if later when add not null to database
-                	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_TIMEFRAME)) != null)
+                	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_TIMEFRAME)) != null)
                 	{
-                		usertime =	cursor.getLong(cursor.getColumnIndex(myDB.COLUMN_TIMEFRAME));
+                		usertime =	cursor.getLong(cursor.getColumnIndex(ACHDatabase.COLUMN_TIMEFRAME));
                 	}
                 } while (cursor.moveToNext());
           
@@ -127,9 +125,9 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
                 // Loop through all Results
                 do {
                 	//can take out if later when add not null to database
-                	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_PHOTOPATH)) != null)
+                	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_PHOTOPATH)) != null)
                 	{
-                		photopath =	cursor.getString(cursor.getColumnIndex(myDB.COLUMN_PHOTOPATH));
+                		photopath =	cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_PHOTOPATH));
                 	}
                 } while (cursor.moveToNext());
           
@@ -166,7 +164,8 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
         {
         new CountDownTimer(timeleft, 1000) {
 
-            public void onTick(long millisUntilFinished) {
+            @Override
+			public void onTick(long millisUntilFinished) {
                 tv_day.setText("Days: " + millisUntilFinished / (60 * 60 * 24 * 1000) + " Hours: " + (millisUntilFinished / (60 * 60 * 1000)) % 24
                 		+ " Min: " + (millisUntilFinished / (60 * 1000)) % 60 + " Sec: " + (millisUntilFinished / 1000) % 60);
                 //tv_hour.setText("Hours: " + (millisUntilFinished / (60 * 60 * 1000)) % 24);
@@ -178,7 +177,8 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
                 
             }
 
-            public void onFinish() {
+            @Override
+			public void onFinish() {
             	b_add.setEnabled(false);
             	b_addphoto.setEnabled(false);
             	tv_day.setText("");
@@ -222,23 +222,17 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
     	
     	//if is competed = 1 disablebutton  
     	b_add.setOnClickListener(new View.OnClickListener() {
-    		public void onClick(View v) {
+    		@Override
+			public void onClick(View v) {
 
     			ACHDatabase myDB = new ACHDatabase(getActivity());
     			//Intent intent = getIntent();
     			
     	        Bundle mybundle;
     	        mybundle = myfrag.getArguments();
-    			
-    			
-    			
+		
     			int ofcomp = mybundle.getInt("ofcomp", 0);
     			int achkey = mybundle.getInt("achkey",0);
-    			
-    			//Bundle mybundle = getArguments();
-    			//comp2 = mybundle.getInt("ofcomp");
-    			//int comp = mybundle.getInt("comp");
-    			//int achkey = mybundle.getInt("achkey");
     			
     			long usertime = 0;
             	long currtime;
@@ -257,9 +251,9 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
     	                // Loop through all Results
     	                do {
     	                	//can take out if later when add not null to database
-    	                	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_TIMEFRAME)) != null)
+    	                	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_TIMEFRAME)) != null)
     	                	{
-    	                		usertime =	cursor.getLong(cursor.getColumnIndex(myDB.COLUMN_TIMEFRAME));
+    	                		usertime =	cursor.getLong(cursor.getColumnIndex(ACHDatabase.COLUMN_TIMEFRAME));
     	         
     	                	}
     	                } while (cursor.moveToNext());
@@ -290,9 +284,9 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
     	                // Loop through all Results
     	                do {
     	                	//can take out if later when add not null to database
-    	                	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_NUMBEROFCOMP)) != null)
+    	                	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_NUMBEROFCOMP)) != null)
     	                	{
-    	                		ofcomp =	cursor.getInt(cursor.getColumnIndex(myDB.COLUMN_NUMBEROFCOMP));
+    	                		ofcomp =	cursor.getInt(cursor.getColumnIndex(ACHDatabase.COLUMN_NUMBEROFCOMP));
     	                	}
     	                } while (cursor.moveToNext());
     	          
@@ -331,9 +325,10 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
 	}
 
 	
+	@Override
 	public void onActivityResult(int ReqC, int ResC, Intent data)
 	{
-		//Intent intent = getIntent();
+		Log.i("vie","Made It to Activity Result, ReqC =  " + ReqC + " and ResC = " + ResC);
 		
 		Bundle mybundle;
         mybundle = myfrag.getArguments();
@@ -345,7 +340,6 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
 		
 		if(ReqC == TAKE_PHOTO_CODE && ResC == RESULT_OK)
 		{
-			
 			//add photopath to database
 			int photocount = 0;
 			String photopath = null;
@@ -367,9 +361,9 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
 	                // Loop through all Results
 	                do {
 	                	//can take out if later when add not null to database
-	                	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_PHOTOPATH)) != null)
+	                	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_PHOTOPATH)) != null)
 	                	{
-	                		photopath =	cursor.getString(cursor.getColumnIndex(myDB.COLUMN_PHOTOPATH));
+	                		photopath =	cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_PHOTOPATH));
 	                	}
 	                } while (cursor.moveToNext());
 	          
@@ -438,7 +432,7 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
 
       Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE); 
       cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
-      startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);
+      getActivity().startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);
 	}
 	
 	public int getachphotocount()
@@ -460,9 +454,9 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
 	                // Loop through all Results
 	                do {
 	                	//can take out if later when add not null to database
-	                	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_PHOTOCOUNT)) != null)
+	                	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_PHOTOCOUNT)) != null)
 	                	{
-	                		myphotocount =	cursor.getInt(cursor.getColumnIndex(myDB.COLUMN_PHOTOCOUNT));
+	                		myphotocount =	cursor.getInt(cursor.getColumnIndex(ACHDatabase.COLUMN_PHOTOCOUNT));
 	                	}
 	                } while (cursor.moveToNext());
 	            }
@@ -484,7 +478,7 @@ public class Friend_Achievement_Details_Fragment extends SherlockFragment {
 		myDB.delete_achievement(achkey);
 		myDB.close();    
 		
-		getFragmentManager().popBackStackImmediate();
+		mActivity.onBackPressed();
 
 	}
 	

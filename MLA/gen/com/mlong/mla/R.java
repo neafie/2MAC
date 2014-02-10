@@ -983,7 +983,6 @@ containing a value of this type.
         public static final int vie_logo=0x7f0200b2;
     }
     public static final class id {
-        public static final int RelativeLayout1=0x7f05005c;
         public static final int abs__action_bar=0x7f050020;
         public static final int abs__action_bar_container=0x7f05001f;
         public static final int abs__action_bar_subtitle=0x7f050011;
@@ -1024,21 +1023,22 @@ containing a value of this type.
         public static final int abs__title=0x7f05001b;
         public static final int abs__up=0x7f05000b;
         public static final int achtotal=0x7f050034;
-        public static final int action_settings=0x7f050081;
-        public static final int b_addContacts=0x7f050068;
+        public static final int action_settings=0x7f050083;
+        public static final int b_addContacts=0x7f05006a;
         public static final int b_addcomp=0x7f050047;
         public static final int b_addphoto=0x7f05004a;
-        public static final int b_dpick=0x7f050061;
-        public static final int b_tpick=0x7f050063;
-        public static final int btnLogin=0x7f050079;
-        public static final int btnLogout=0x7f050067;
-        public static final int btnRegister=0x7f05007f;
+        public static final int b_dpick=0x7f050062;
+        public static final int b_tpick=0x7f050064;
+        public static final int btnLogin=0x7f05007b;
+        public static final int btnLogout=0x7f050069;
+        public static final int btnRegister=0x7f050081;
         public static final int button1=0x7f05004d;
         public static final int button2=0x7f050033;
         public static final int buttonach=0x7f050059;
-        public static final int buttonicon=0x7f050065;
+        public static final int buttonicon=0x7f050066;
         public static final int buttonmyach=0x7f050032;
-        public static final int checkBox1=0x7f050066;
+        public static final int checkBox1=0x7f050068;
+        public static final int delete_list=0x7f050084;
         public static final int disableHome=0x7f050009;
         public static final int edit_query=0x7f050026;
         public static final int et_aname=0x7f05004f;
@@ -1046,46 +1046,49 @@ containing a value of this type.
         public static final int et_listdesc=0x7f050051;
         public static final int et_numb=0x7f050058;
         public static final int et_points=0x7f050056;
-        public static final int footer=0x7f050075;
-        public static final int header=0x7f050074;
+        public static final int footer=0x7f050077;
+        public static final int gotopage2=0x7f05005b;
+        public static final int header=0x7f050076;
         public static final int homeAsUp=0x7f050006;
-        public static final int icon_cup=0x7f050069;
-        public static final int icon_fish=0x7f05006a;
-        public static final int icon_footprints=0x7f05006b;
-        public static final int icon_fork=0x7f05006c;
-        public static final int icon_hammer=0x7f05006d;
-        public static final int icon_pretzel=0x7f05006e;
-        public static final int icon_quill=0x7f05006f;
-        public static final int icon_rocket=0x7f050070;
-        public static final int icon_spaceship=0x7f050071;
-        public static final int icon_tree=0x7f050072;
-        public static final int icon_turtle=0x7f050073;
+        public static final int icon_cup=0x7f05006b;
+        public static final int icon_fish=0x7f05006c;
+        public static final int icon_footprints=0x7f05006d;
+        public static final int icon_fork=0x7f05006e;
+        public static final int icon_hammer=0x7f05006f;
+        public static final int icon_pretzel=0x7f050070;
+        public static final int icon_quill=0x7f050071;
+        public static final int icon_rocket=0x7f050072;
+        public static final int icon_spaceship=0x7f050073;
+        public static final int icon_tree=0x7f050074;
+        public static final int icon_turtle=0x7f050075;
         public static final int imageView1=0x7f05003a;
-        public static final int imgLogo=0x7f05005e;
+        public static final int imgLogo=0x7f05005f;
+        public static final int iv_icon=0x7f050067;
         public static final int iv_photo=0x7f05004b;
-        public static final int link_to_login=0x7f050080;
-        public static final int link_to_register=0x7f05007a;
+        public static final int link_to_login=0x7f050082;
+        public static final int link_to_register=0x7f05007c;
         public static final int listMode=0x7f050002;
-        public static final int listmiddletext=0x7f05005b;
-        public static final int listtoptext=0x7f05005a;
-        public static final int loginEmail=0x7f050076;
-        public static final int loginPassword=0x7f050077;
-        public static final int login_error=0x7f050078;
+        public static final int listmiddletext=0x7f05005d;
+        public static final int listtoptext=0x7f05005c;
+        public static final int loginEmail=0x7f050078;
+        public static final int loginPassword=0x7f050079;
+        public static final int login_error=0x7f05007a;
         public static final int middletext=0x7f050038;
         public static final int normal=0x7f050001;
         public static final int pointtotal=0x7f050035;
-        public static final int radioButton1=0x7f050060;
-        public static final int radioButton2=0x7f05005f;
-        public static final int realtabcontent=0x7f05005d;
-        public static final int registerEmail=0x7f05007c;
-        public static final int registerName=0x7f05007b;
-        public static final int registerPassword=0x7f05007d;
-        public static final int register_error=0x7f05007e;
+        public static final int radioButton1=0x7f050061;
+        public static final int radioButton2=0x7f050060;
+        public static final int realtabcontent=0x7f05005e;
+        public static final int registerEmail=0x7f05007e;
+        public static final int registerName=0x7f05007d;
+        public static final int registerPassword=0x7f05007f;
+        public static final int register_error=0x7f050080;
         public static final int showCustom=0x7f050008;
         public static final int showHome=0x7f050005;
         public static final int showTitle=0x7f050007;
         public static final int tabMode=0x7f050003;
         public static final int table=0x7f050052;
+        public static final int textView1=0x7f05005a;
         public static final int toptext=0x7f050039;
         public static final int tv_at_i=0x7f050037;
         public static final int tv_com2_i=0x7f050043;
@@ -1100,8 +1103,8 @@ containing a value of this type.
         public static final int tv_listdesc=0x7f050050;
         public static final int tv_listtime=0x7f05003c;
         public static final int tv_min=0x7f050049;
-        public static final int tv_myDate=0x7f050062;
-        public static final int tv_myTime=0x7f050064;
+        public static final int tv_myDate=0x7f050063;
+        public static final int tv_myTime=0x7f050065;
         public static final int tv_numb=0x7f050057;
         public static final int tv_numb_i=0x7f050041;
         public static final int tv_points=0x7f050055;
@@ -2443,7 +2446,7 @@ containing a value of this type.
          */
         public static final int[] SherlockSpinner = {
             0x010100af, 0x01010175, 0x01010176, 0x0101017b,
-            0x01010262, 0x010102ac, 0x010102ad, 0x0101043a
+            0x01010262, 0x010102ac, 0x010102ad, 0x01010411
         };
         /**
           <p>

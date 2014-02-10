@@ -1,10 +1,8 @@
 package com.mlong.mla;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import com.mlong.mla.ListItems.ListItem;
 
 
@@ -13,18 +11,17 @@ import android.app.Dialog;
 import android.database.Cursor;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class Friend_Lists_Fragment extends SherlockFragment 
+public class Friend_Lists_Fragment extends BaseFragment 
 	{
 
 	public final static String MESSAGE = "com.mlong.mla";
@@ -34,7 +31,6 @@ public class Friend_Lists_Fragment extends SherlockFragment
  	private ListCustomListview m_adapter;
    
     int REMOVE;
-    List<Integer> myint = new ArrayList<Integer>();
     
     @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,7 +49,8 @@ public class Friend_Lists_Fragment extends SherlockFragment
         myList.setAdapter(m_adapter);
 		
 		m_parts.clear();
-        
+		myList.setOnItemClickListener(listener);
+
 		ACHDatabase myDB = new ACHDatabase(getActivity());
 		Cursor cursor;
 		myDB.open();
@@ -69,9 +66,9 @@ public class Friend_Lists_Fragment extends SherlockFragment
                 // Loop through all Results
                 do {
                 	ListItem myitem = new ListItem();
-                	String lname = cursor.getString(cursor.getColumnIndex(myDB.COLUMN_LISTNAME));
-                	String ldesc = cursor.getString(cursor.getColumnIndex(myDB.COLUMN_LISTDESC));
-                	forkey = Integer.parseInt(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_FOR)));
+                	String lname = cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_LISTNAME));
+                	String ldesc = cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_LISTDESC));
+                	forkey = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_FOR)));
                 	
                 	myitem.setDescription(ldesc);
                 	myitem.setName(lname);
@@ -88,37 +85,7 @@ public class Friend_Lists_Fragment extends SherlockFragment
         cursor.close();
         myDB.close();
 		
-		myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-                    long arg3) {
-                // TODO Auto-generated method stub
-                
-                ListItem myitem = new ListItem();
-            	myitem = m_parts.get(arg2);
-                
-                REMOVE = arg2;
-            	
-                //gets list key from list
- 
-            	int listkey = myitem.getListkey();
-            	
-            	Bundle mybundle = new Bundle();   
-                mybundle.putInt("listkey", listkey);
-                
-                
-                Fragment newFragment = new Friend_Achievement_List_Fragment();
-                newFragment.setArguments(mybundle);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                
-                transaction.replace(R.id.realtabcontent, newFragment, "friends");
-                transaction.addToBackStack(null);
- 
-                // Commit the transaction
-                transaction.commit();
-            }
-        });
+       
 		
 		AddList.setOnClickListener(
 		        new View.OnClickListener() {
@@ -133,19 +100,33 @@ public class Friend_Lists_Fragment extends SherlockFragment
 		
 		return view;
 	}
+    
+    private OnItemClickListener listener =  new AdapterView.OnItemClickListener() {
 
-    @Override 
-	public void onCreate(Bundle savedInstanceState) { 
-	        super.onCreate(savedInstanceState);
-	
-    }
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-	    super.onActivityCreated(savedInstanceState);
-	    
-	    
-	    
-	}
+        @Override
+        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                long arg3) {
+            // TODO Auto-generated method stub
+            
+            ListItem myitem = new ListItem();
+        	myitem = m_parts.get(arg2);
+            
+            REMOVE = arg2;
+        	
+            //gets list key from list
+
+        	int listkey = myitem.getListkey();
+        	
+        	Bundle mybundle = new Bundle();
+            mybundle.putInt("listkey", listkey);
+
+            Fragment newFragment = new Friend_Achievement_List_Fragment();
+            newFragment.setArguments(mybundle);
+            
+            mActivity.pushFragments(AppConstants.TAB_F, newFragment,true,true);
+           
+        }
+    };
 	
 	public void sendMessage(View myV)
 	{

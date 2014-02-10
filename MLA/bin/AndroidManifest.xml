@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="11"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="17" />
 
     <!-- Allow to connect with internet -->
     <uses-permission android:name="android.permission.INTERNET" />

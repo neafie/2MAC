@@ -5,11 +5,8 @@ import java.util.ArrayList;
 import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.mlong.mla.AchItems.Item;
-
-import android.support.v4.app.FragmentManager;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 
 public class TabListener extends SherlockFragment implements com.actionbarsherlock.app.ActionBar.TabListener {
     private final SherlockFragmentActivity mActivity;
@@ -28,19 +25,22 @@ public class TabListener extends SherlockFragment implements com.actionbarsherlo
 
     
     //if current tag != previous tag don't attach.
-    public void onTabSelected(Tab tab, FragmentTransaction ft) {
+    @Override
+	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 
     	SherlockFragment preInitializedFragment = (SherlockFragment) mActivity.getSupportFragmentManager().findFragmentByTag(mTag);
         if (preInitializedFragment == null) {
-            mFragment = (SherlockFragment) SherlockFragment.instantiate(mActivity, mClass.getName());
+            mFragment = (SherlockFragment) Fragment.instantiate(mActivity, mClass.getName());
             ft.add(R.id.realtabcontent, mFragment, mTag);
-        } else {
+        } else /*if(preInitializedFragment.getTag().contentEquals(mFragment.getTag())) */{
+        	
             ft.attach(preInitializedFragment);
         }
     	
     }
 
-    public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+    @Override
+	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
         SherlockFragment preInitializedFragment = (SherlockFragment) mActivity.getSupportFragmentManager().findFragmentByTag(mTag);
 
         if (preInitializedFragment != null) {
@@ -51,7 +51,8 @@ public class TabListener extends SherlockFragment implements com.actionbarsherlo
           	
     }
 
-    public void onTabReselected(Tab tab, FragmentTransaction ft) {
+    @Override
+	public void onTabReselected(Tab tab, FragmentTransaction ft) {
         // User selected the already selected tab. Usually do nothing.
     }
 }

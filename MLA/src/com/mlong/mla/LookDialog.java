@@ -1,14 +1,11 @@
 package com.mlong.mla;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Calendar;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Environment;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -17,8 +14,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -83,14 +78,16 @@ public class LookDialog extends DialogFragment {
         builder.setView(layout)
         	   .setMessage(myName)
                .setPositiveButton(R.string.remove, new DialogInterface.OnClickListener() {
-                   public void onClick(DialogInterface dialog, int id) {
+                   @Override
+				public void onClick(DialogInterface dialog, int id) {
                 	   
                 	   
                 	   mListener.onlookDialogPositiveClick(LookDialog.this, achkey);
                    }
                })
                .setNegativeButton(R.string.back, new DialogInterface.OnClickListener() {
-                   public void onClick(DialogInterface dialog, int id) {
+                   @Override
+				public void onClick(DialogInterface dialog, int id) {
                        // User cancelled the dialog
                 	   boolean iscomp = getcomp();
                 	   
@@ -145,9 +142,9 @@ public class LookDialog extends DialogFragment {
 	                // Loop through all Results
 	                do {
 	                	//can take out if later when add not null to database
-	                	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_TIMEFRAME)) != null)
+	                	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_TIMEFRAME)) != null)
 	                	{
-	                		usertime =	cursor.getLong(cursor.getColumnIndex(myDB.COLUMN_TIMEFRAME));
+	                		usertime =	cursor.getLong(cursor.getColumnIndex(ACHDatabase.COLUMN_TIMEFRAME));
 	                	}
 	                } while (cursor.moveToNext());
 	          
@@ -164,9 +161,9 @@ public class LookDialog extends DialogFragment {
 	                // Loop through all Results
 	                do {
 	                	//can take out if later when add not null to database
-	                	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_PHOTOPATH)) != null)
+	                	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_PHOTOPATH)) != null)
 	                	{
-	                		photopath =	cursor.getString(cursor.getColumnIndex(myDB.COLUMN_PHOTOPATH));
+	                		photopath =	cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_PHOTOPATH));
 	                	}
 	                } while (cursor.moveToNext());
 	          
@@ -203,7 +200,8 @@ public class LookDialog extends DialogFragment {
 	        {
 	        new CountDownTimer(timeleft, 1000) {
 
-	            public void onTick(long millisUntilFinished) {
+	            @Override
+				public void onTick(long millisUntilFinished) {
 	                tv_day.setText("Days: " + millisUntilFinished / (60 * 60 * 24 * 1000) + " Hours: " + (millisUntilFinished / (60 * 60 * 1000)) % 24
 	                		+ " Min: " + (millisUntilFinished / (60 * 1000)) % 60 + " Sec: " + (millisUntilFinished / 1000) % 60);
 	                //tv_hour.setText("Hours: " + (millisUntilFinished / (60 * 60 * 1000)) % 24);
@@ -215,7 +213,8 @@ public class LookDialog extends DialogFragment {
 	                
 	            }
 
-	            public void onFinish() {
+	            @Override
+				public void onFinish() {
 	            	b_add.setEnabled(false);
 	            	b_addphoto.setEnabled(false);
 	            	tv_day.setText("");
@@ -259,7 +258,8 @@ public class LookDialog extends DialogFragment {
         	
         	//if is competed = 1 disablebutton  
         	b_add.setOnClickListener(new View.OnClickListener() {
-        		public void onClick(View v) {
+        		@Override
+				public void onClick(View v) {
 
         			ACHDatabase myDB = new ACHDatabase(getActivity());
         			int comp2 = 0;
@@ -285,9 +285,9 @@ public class LookDialog extends DialogFragment {
         	                // Loop through all Results
         	                do {
         	                	//can take out if later when add not null to database
-        	                	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_TIMEFRAME)) != null)
+        	                	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_TIMEFRAME)) != null)
         	                	{
-        	                		usertime =	cursor.getLong(cursor.getColumnIndex(myDB.COLUMN_TIMEFRAME));
+        	                		usertime =	cursor.getLong(cursor.getColumnIndex(ACHDatabase.COLUMN_TIMEFRAME));
         	         
         	                	}
         	                } while (cursor.moveToNext());
@@ -318,9 +318,9 @@ public class LookDialog extends DialogFragment {
         	                // Loop through all Results
         	                do {
         	                	//can take out if later when add not null to database
-        	                	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_NUMBEROFCOMP)) != null)
+        	                	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_NUMBEROFCOMP)) != null)
         	                	{
-        	                		comp2 =	cursor.getInt(cursor.getColumnIndex(myDB.COLUMN_NUMBEROFCOMP));
+        	                		comp2 =	cursor.getInt(cursor.getColumnIndex(ACHDatabase.COLUMN_NUMBEROFCOMP));
         	                	}
         	                } while (cursor.moveToNext());
         	          

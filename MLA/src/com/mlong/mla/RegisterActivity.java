@@ -53,7 +53,8 @@ public class RegisterActivity extends Activity {
      // Register Button Click event
         btnRegister.setOnClickListener(new View.OnClickListener() {         
            
-            	public void onClick(View view) {
+            	@Override
+				public void onClick(View view) {
             	    String name = inputFullName.getText().toString();
             	    String email = inputEmail.getText().toString();
             	    String password = inputPassword.getText().toString();
@@ -66,7 +67,8 @@ public class RegisterActivity extends Activity {
         // Listening to Login Screen link
         loginScreen.setOnClickListener(new View.OnClickListener() {
  
-        	public void onClick(View view) {
+        	@Override
+			public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(),
                         LoginActivity.class);
                 startActivity(i);
@@ -78,7 +80,8 @@ public class RegisterActivity extends Activity {
 
     private class MyAsyncTask extends AsyncTask<String, Void, JSONObject> {
         
-        protected JSONObject doInBackground(String... params) {
+        @Override
+		protected JSONObject doInBackground(String... params) {
                 UserFunctions userFunction = new UserFunctions();
                 if (params.length != 3)
                         return null;
@@ -86,7 +89,8 @@ public class RegisterActivity extends Activity {
                 return json;
         }
        
-        protected void onPostExecute(JSONObject json) {
+        @Override
+		protected void onPostExecute(JSONObject json) {
                 // check for login response
         try {
             if (json != null && json.getString(KEY_SUCCESS) != null) {

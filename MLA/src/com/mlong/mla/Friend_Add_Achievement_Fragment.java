@@ -6,36 +6,26 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 import java.util.StringTokenizer;
-import java.util.TimeZone;
-
-import com.actionbarsherlock.app.SherlockFragment;
-
-
 import android.os.Bundle;
-import android.app.Activity;
-import android.app.TimePickerDialog;
-import android.app.DatePickerDialog.OnDateSetListener;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
-import android.text.format.DateFormat;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-import android.content.Intent;
-import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 
 
-public class Friend_Add_Achievement_Fragment extends SherlockFragment {
+public class Friend_Add_Achievement_Fragment extends BaseFragment {
 
 	int myyear,mymonth,myday,myhour,mymin;
 	View view;
@@ -51,6 +41,23 @@ public class Friend_Add_Achievement_Fragment extends SherlockFragment {
 		
 		Button date = (Button) view.findViewById(R.id.b_dpick);
 		Button time = (Button) view.findViewById(R.id.b_tpick);
+		Button icon = (Button) view.findViewById(R.id.buttonicon);
+		ImageView iconview = (ImageView) view.findViewById(R.id.iv_icon);
+		
+		
+		String uri = AppConstants.icon;
+		
+		if(uri != null)
+		{
+			int id = getResources().getIdentifier("com.mlong.mla:drawable/" + uri+"black", null, null);
+			if(id != 0)
+			{
+				Drawable res = getResources().getDrawable(id);
+				iconview.setImageDrawable(res);	
+			}
+		}
+		
+		icon.setOnClickListener(listener);
 		
 		date.setEnabled(false);
 		time.setEnabled(false);
@@ -58,7 +65,17 @@ public class Friend_Add_Achievement_Fragment extends SherlockFragment {
 		return view;
 	}
 
-
+	private OnClickListener listener = new View.OnClickListener() {
+        @Override
+    	public void onClick(View v) {   
+            
+            Fragment newFragment = new Friend_Icon_Page();
+  
+            mActivity.pushFragments(AppConstants.TAB_F, newFragment,true,true);
+    		
+        }
+      
+    };
 	
 
 	public void AddAch(View myV)
@@ -77,7 +94,7 @@ public class Friend_Add_Achievement_Fragment extends SherlockFragment {
 	     
 	     if((my_name.getText().toString().equals("") 
 					|| my_desc.getText().toString().equals("") || my_point.getText().toString().equals("")
-					|| Integer.parseInt(my_numb.getText().toString()) < 1
+					|| Integer.parseInt(my_numb.getText().toString()) < 1 || AppConstants.icon == null
 					|| my_numb.getText().toString().equals("")) || ((mydate.getText().toString().equals("")
 					|| mytime.getText().toString().equals("")) && date.isEnabled() == true))
 			{
@@ -85,7 +102,7 @@ public class Friend_Add_Achievement_Fragment extends SherlockFragment {
 			}
 	     else if ((my_name.getText().toString().equals("") 
 					|| my_desc.getText().toString().equals("") || my_point.getText().toString().equals("")
-					|| Integer.parseInt(my_numb.getText().toString()) < 1
+					|| Integer.parseInt(my_numb.getText().toString()) < 1 || AppConstants.icon == null
 					|| my_numb.getText().toString().equals("")) && date.isEnabled() == false)
 	     {
 	    	 Toast.makeText(getActivity(), "You must complete all fields", Toast.LENGTH_SHORT).show(); 
@@ -156,11 +173,11 @@ public class Friend_Add_Achievement_Fragment extends SherlockFragment {
 		
 			myDB.open();
 		
-			myDB.createInsert(key, my_name.getText().toString(), randkey, Integer.parseInt(my_point.getText().toString()), null, user_date, Integer.parseInt(my_numb.getText().toString()), my_desc.getText().toString(), 1,null);
+			myDB.createInsert(key, my_name.getText().toString(), randkey, Integer.parseInt(my_point.getText().toString()), null, user_date, Integer.parseInt(my_numb.getText().toString()), my_desc.getText().toString(), 1, AppConstants.icon);
 		
 			myDB.close();
 		
-			getFragmentManager().popBackStackImmediate();
+			mActivity.onBackPressed();     
 			
 	    }
 	    else if(date.isEnabled() == false && myRPerson.isChecked() == true)
@@ -168,11 +185,11 @@ public class Friend_Add_Achievement_Fragment extends SherlockFragment {
 			
 			myDB.open();
 		
-			myDB.createInsert(key, my_name.getText().toString(), randkey, Integer.parseInt(my_point.getText().toString()), null, 0, Integer.parseInt(my_numb.getText().toString()), my_desc.getText().toString(), 1,null);
+			myDB.createInsert(key, my_name.getText().toString(), randkey, Integer.parseInt(my_point.getText().toString()), null, 0, Integer.parseInt(my_numb.getText().toString()), my_desc.getText().toString(), 1, AppConstants.icon);
 		
 			myDB.close();
 		
-			getFragmentManager().popBackStackImmediate();
+			mActivity.onBackPressed();     
 			
 	    }
 	    else if(date.isEnabled() == true && myRPerson.isChecked() == false)
@@ -180,22 +197,22 @@ public class Friend_Add_Achievement_Fragment extends SherlockFragment {
 			
 			myDB.open();
 		
-			myDB.createInsert(key, my_name.getText().toString(), randkey, Integer.parseInt(my_point.getText().toString()), null, user_date, Integer.parseInt(my_numb.getText().toString()), my_desc.getText().toString(), 0,null);
+			myDB.createInsert(key, my_name.getText().toString(), randkey, Integer.parseInt(my_point.getText().toString()), null, user_date, Integer.parseInt(my_numb.getText().toString()), my_desc.getText().toString(), 0, AppConstants.icon);
 		
 			myDB.close();
 		
-			getFragmentManager().popBackStackImmediate();
+			mActivity.onBackPressed();     
 			
 	    }
 	    else
 	    {
 	    	myDB.open();
 			
-			myDB.createInsert(key, my_name.getText().toString(), randkey, Integer.parseInt(my_point.getText().toString()), null, 0, Integer.parseInt(my_numb.getText().toString()), my_desc.getText().toString(), 0,null);
+			myDB.createInsert(key, my_name.getText().toString(), randkey, Integer.parseInt(my_point.getText().toString()), null, 0, Integer.parseInt(my_numb.getText().toString()), my_desc.getText().toString(), 0, AppConstants.icon);
 		
 			myDB.close();
 		
-			getFragmentManager().popBackStackImmediate();
+			mActivity.onBackPressed();     
 			
 	    }
 	    
@@ -285,11 +302,6 @@ public class Friend_Add_Achievement_Fragment extends SherlockFragment {
 			myRPerson.setChecked(false);
 			ischecked = false;
 		}
-	}
-	
-	public void addIcon(View v)
-	{
-		
 	}
 	
 }

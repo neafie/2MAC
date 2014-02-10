@@ -34,7 +34,8 @@ public class DashboardActivity extends Activity {
              
             btnLogout.setOnClickListener(new View.OnClickListener() {
                  
-                public void onClick(View arg0) {
+                @Override
+				public void onClick(View arg0) {
                     // TODO Auto-generated method stub
                     userFunctions.logoutUser(getApplicationContext());
                     Intent login = new Intent(getApplicationContext(), LoginActivity.class);

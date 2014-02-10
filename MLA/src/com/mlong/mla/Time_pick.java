@@ -3,14 +3,11 @@ package com.mlong.mla;
 import java.util.Calendar;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
 import android.support.v4.app.DialogFragment;
 import android.text.format.DateFormat;
-import android.view.Menu;
-import android.widget.TimePicker;
 
 public class Time_pick extends DialogFragment
 {

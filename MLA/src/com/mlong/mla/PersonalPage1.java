@@ -1,17 +1,11 @@
 package com.mlong.mla;
 
-import com.actionbarsherlock.app.SherlockFragment;
-
 import android.os.Bundle;
-//import android.support.v4.app.FragmentActivity;
-import android.app.Activity;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class PersonalPage1 extends SherlockFragment {
+public class PersonalPage1 extends BaseFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

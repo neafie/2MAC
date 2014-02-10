@@ -5,24 +5,25 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.StringTokenizer;
 
-import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.mlong.mla.AchItems.Item;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class Friend_Achievement_List_Fragment extends SherlockFragment {
+public class Friend_Achievement_List_Fragment extends BaseFragment {
 	
 	int REMOVE2;
 	
@@ -40,14 +41,18 @@ public class Friend_Achievement_List_Fragment extends SherlockFragment {
 	int DELETECODE = 4;
 	int RESULT_CANCELED = 0;
 	View view;
-	
+	MenuItem deleteList;
 		
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 		
 		view = inflater.inflate(R.layout.activity_ach_list, container, false);
-	
+		setHasOptionsMenu(true);
+		
+		AppConstants.icon = null;
+		
+		Button b_addach = (Button) view.findViewById(R.id.buttonmyach);
 		ACHDatabase myDB = new ACHDatabase(getActivity());
 		Cursor cursor;
 		ListView AList;
@@ -60,10 +65,13 @@ public class Friend_Achievement_List_Fragment extends SherlockFragment {
         AList.setAdapter(m_adapter);
         m_parts.clear();
         
+        b_addach.setOnClickListener(otherlistener);
+        AList.setOnItemClickListener(listener);
+        
+        
         Friend_Achievement_List_Fragment myfrag = this;
         Bundle mybundle;
         mybundle = myfrag.getArguments();
-
         key= mybundle.getInt("listkey");
         
         myDB.open();
@@ -78,6 +86,7 @@ public class Friend_Achievement_List_Fragment extends SherlockFragment {
     	String mytime = null;
         boolean trophy = false;
         int achkey;
+        String iconpath;
         
         // Check if our result was valid.
 		if(cursor != null) {
@@ -87,14 +96,16 @@ public class Friend_Achievement_List_Fragment extends SherlockFragment {
                 // Loop through all Results
                 do {
                 	//can take out if later when add not null to database
-                	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_ACHKEY)) != null)
+                	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_ACHKEY)) != null)
                 	{
                 		Item myitem = new Item();
-                		aname = cursor.getString(cursor.getColumnIndex(myDB.COLUMN_ACHNAME));
-                		dname = cursor.getString(cursor.getColumnIndex(myDB.COLUMN_DESCRIPTION));
-                		trophy = cursor.getInt(cursor.getColumnIndex(myDB.COLUMN_ISCOMPLETED))>0;
-                		time = cursor.getLong(cursor.getColumnIndex(myDB.COLUMN_TIMEFRAME));
-                		achkey = cursor.getInt(cursor.getColumnIndex(myDB.COLUMN_ACHKEY));
+                		aname = cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_ACHNAME));
+                		dname = cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_DESCRIPTION));
+                		trophy = cursor.getInt(cursor.getColumnIndex(ACHDatabase.COLUMN_ISCOMPLETED))>0;
+                		time = cursor.getLong(cursor.getColumnIndex(ACHDatabase.COLUMN_TIMEFRAME));
+                		achkey = cursor.getInt(cursor.getColumnIndex(ACHDatabase.COLUMN_ACHKEY));
+                		iconpath = cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_ICON));
+                		
                 		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm"); 
                 		String dateString = formatter.format(new Date(time));
                 		
@@ -115,6 +126,7 @@ public class Friend_Achievement_List_Fragment extends SherlockFragment {
                 		myitem.setDate(mydate);
                 		myitem.setTime(mytime);
                 		myitem.setAchkey(achkey);
+                		myitem.setIconPath(iconpath);
                 		if(dateString.compareTo("12/31/1969 19:00") == 0)
                 		{
                 			myitem.setDate("");
@@ -136,153 +148,15 @@ public class Friend_Achievement_List_Fragment extends SherlockFragment {
 		cursor.close();
         myDB.close();		
         
-        //When you click on an achievement
-        AList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        	
+        Button b_findContacts = (Button) view.findViewById(R.id.button2);
+        b_findContacts.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-                    long arg3) {
-                // TODO Auto-generated method stub
-            	
-            	Item myitem = new Item();
-            	
-            	String desc = "";
-            	int comp = 0;
-            	int points = 0;
-            	long datetime = 0;
-            	String date;
-            	String time;
-            	int Achkey;
-            	String name;
-            	myitem = m_parts.get(arg2);
-            	
-            	name = myitem.getName();
-            	Achkey = myitem.getAchkey();
-            	
-            	
-            	//REMOVE = myS;
-            	REMOVE2 = arg2;
-            	
-            	//getting all the things to pass to the dialog
-            	ACHDatabase myDB = new ACHDatabase(getActivity());
-            	Cursor cursor;
-            	myDB.open();
-            	cursor = myDB.getmypoints(Achkey);
-            	cursor.moveToFirst();
-            	
-            	if(cursor != null) {
-                    if(cursor.getCount() > 0) {
-                    		points = cursor.getInt(cursor.getColumnIndex(myDB.COLUMN_POINTS));
-                    }
-            	}
-            	
-            	cursor = myDB.getnumb(Achkey);
-            	cursor.moveToFirst();
-            	
-            	if(cursor != null) {
-                    if(cursor.getCount() > 0) {
-                    	comp = cursor.getInt(cursor.getColumnIndex(myDB.COLUMN_NUMBERTOCOMP));
-                    }
-            	}
-            	
-            	cursor = myDB.getdesc(Achkey);
-            	cursor.moveToFirst();
-            	
-            	if(cursor != null) {
-                    if(cursor.getCount() > 0) {
-                    	desc = cursor.getString(cursor.getColumnIndex(myDB.COLUMN_DESCRIPTION));
-                    }
-            	}
-            	
-            	cursor = myDB.gettime(Achkey);
-            	cursor.moveToFirst();
-            	
-            	if(cursor != null) {
-                    if(cursor.getCount() > 0) {
-                    	datetime =	cursor.getLong(cursor.getColumnIndex(myDB.COLUMN_TIMEFRAME));
-                    }
-            	}
-            	
-            	cursor.close();
-            	myDB.close();
-            	
-            	SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm"); 
-        		String dateString = formatter.format(new Date(datetime));
-        		
-        		//parse dateString
-        		StringTokenizer tokens = new StringTokenizer(dateString, " ");
-        		date = tokens.nextToken();
-        		time = tokens.nextToken();
-            	
-
-            	boolean completed;
-            	int ofcomplete;
-            	
-            	completed = getiscomplete(Achkey);
-            	ofcomplete = getofcomplete(Achkey);
-            	
-            	//send data to details page
+			public void onClick(View v) {
+            	Fragment newFragment = new Friend_Contact_List();
             	Bundle mybundle = new Bundle();
-            	mybundle.putString("namekey", name);
-            	mybundle.putInt("points", points);
-            	mybundle.putInt("comp", comp);
-            	mybundle.putString("desc", desc);
-            	mybundle.putBoolean("iscomp", completed);
-            	mybundle.putInt("ofcomp", ofcomplete);
-            	mybundle.putInt("place", arg2);
-            	mybundle.putString("date", date);
-        		mybundle.putString("time", time);
-            	mybundle.putInt("achkey", Achkey);
-            	
-        		if(dateString.compareTo("12/31/1969 19:00") == 0)
-        		{
-            		mybundle.putString("date", "");
-            		mybundle.putString("time", "");
-        		}
-
-        		Fragment newFragment = new Friend_Achievement_Details_Fragment();
-                newFragment.setArguments(mybundle);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                
-                transaction.replace(R.id.realtabcontent, newFragment, "friends");
-                transaction.addToBackStack(null);
- 
-                // Commit the transaction
-                transaction.commit();
-        		
-            }
-        });
-        
-        
-        Button b_addach = (Button) view.findViewById(R.id.buttonmyach);
-        b_addach.setOnClickListener(new View.OnClickListener() {
-            @Override
-        	public void onClick(View v) {   
-            	
-        		Bundle mybundle = new Bundle();         
-                mybundle.putInt("key", key);
-                
-                Fragment newFragment = new Friend_Add_Achievement_Fragment();
-                newFragment.setArguments(mybundle);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                
-                transaction.replace(R.id.realtabcontent, newFragment, "friends");
-                transaction.addToBackStack(null);
-                transaction.commit();
-        		
-            }
-          
-        });
-        
-        Button b_deletelist = (Button) view.findViewById(R.id.button2);
-        b_deletelist.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            	ACHDatabase myDB = new ACHDatabase(getActivity());
-        		myDB.open();
-        		myDB.delete_list(key);
-        		myDB.close();
-
-        		getFragmentManager().popBackStackImmediate();	   
+            	mybundle.putInt("listkey", key);
+            	newFragment.setArguments(mybundle);
+                mActivity.pushFragments(AppConstants.TAB_F, newFragment,true,true);
             	
             }
            
@@ -291,6 +165,165 @@ public class Friend_Achievement_List_Fragment extends SherlockFragment {
         
         return view;
 	}
+	
+	
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+	    // TODO Add your menu entries here
+		deleteList = menu.add("Delete List");
+		
+	    super.onCreateOptionsMenu(menu, inflater);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    if (item.getItemId() == deleteList.getItemId()) {	     
+	        // EITHER CALL THE METHOD HERE OR DO THE FUNCTION DIRECTLY
+	        deleteList();
+
+	        return true;
+	    }
+	    else{
+	        return super.onOptionsItemSelected(item);
+	    }
+	}
+	
+	public void deleteList()
+	{
+		ACHDatabase myDB = new ACHDatabase(getActivity());
+		myDB.open();
+		myDB.delete_list(key);
+		myDB.close();
+
+		mActivity.onBackPressed(); 
+	}
+	
+	//When you click on an achievement
+    private OnItemClickListener listener = new AdapterView.OnItemClickListener() {
+    	
+        @Override
+        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                long arg3) {
+            // TODO Auto-generated method stub
+        	
+        	Item myitem = new Item();
+        	
+        	String desc = "";
+        	int comp = 0;
+        	int points = 0;
+        	long datetime = 0;
+        	String date;
+        	String time;
+        	int Achkey;
+        	String name;
+        	myitem = m_parts.get(arg2);
+        	
+        	name = myitem.getName();
+        	Achkey = myitem.getAchkey();
+        	
+        	
+        	//REMOVE = myS;
+        	REMOVE2 = arg2;
+        	
+        	//getting all the things to pass to the dialog
+        	ACHDatabase myDB = new ACHDatabase(getActivity());
+        	Cursor cursor;
+        	myDB.open();
+        	cursor = myDB.getmypoints(Achkey);
+        	cursor.moveToFirst();
+        	
+        	if(cursor != null) {
+                if(cursor.getCount() > 0) {
+                		points = cursor.getInt(cursor.getColumnIndex(ACHDatabase.COLUMN_POINTS));
+                }
+        	}
+        	
+        	cursor = myDB.getnumb(Achkey);
+        	cursor.moveToFirst();
+        	
+        	if(cursor != null) {
+                if(cursor.getCount() > 0) {
+                	comp = cursor.getInt(cursor.getColumnIndex(ACHDatabase.COLUMN_NUMBERTOCOMP));
+                }
+        	}
+        	
+        	cursor = myDB.getdesc(Achkey);
+        	cursor.moveToFirst();
+        	
+        	if(cursor != null) {
+                if(cursor.getCount() > 0) {
+                	desc = cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_DESCRIPTION));
+                }
+        	}
+        	
+        	cursor = myDB.gettime(Achkey);
+        	cursor.moveToFirst();
+        	
+        	if(cursor != null) {
+                if(cursor.getCount() > 0) {
+                	datetime =	cursor.getLong(cursor.getColumnIndex(ACHDatabase.COLUMN_TIMEFRAME));
+                }
+        	}
+        	
+        	cursor.close();
+        	myDB.close();
+        	
+        	SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm"); 
+    		String dateString = formatter.format(new Date(datetime));
+    		
+    		//parse dateString
+    		StringTokenizer tokens = new StringTokenizer(dateString, " ");
+    		date = tokens.nextToken();
+    		time = tokens.nextToken();
+        	
+
+        	boolean completed;
+        	int ofcomplete;
+        	
+        	completed = getiscomplete(Achkey);
+        	ofcomplete = getofcomplete(Achkey);
+        	
+        	//send data to details page
+        	Bundle mybundle = new Bundle();
+        	mybundle.putString("namekey", name);
+        	mybundle.putInt("points", points);
+        	mybundle.putInt("comp", comp);
+        	mybundle.putString("desc", desc);
+        	mybundle.putBoolean("iscomp", completed);
+        	mybundle.putInt("ofcomp", ofcomplete);
+        	mybundle.putInt("place", arg2);
+        	mybundle.putString("date", date);
+    		mybundle.putString("time", time);
+        	mybundle.putInt("achkey", Achkey);
+        	
+    		if(dateString.compareTo("12/31/1969 19:00") == 0)
+    		{
+        		mybundle.putString("date", "");
+        		mybundle.putString("time", "");
+    		}
+
+    		Fragment newFragment = new Friend_Achievement_Details_Fragment();
+            newFragment.setArguments(mybundle);
+            
+            mActivity.pushFragments(AppConstants.TAB_F, newFragment,true,true);
+        }
+    };
+    
+    private OnClickListener otherlistener = new View.OnClickListener() {
+        @Override
+    	public void onClick(View v) {   
+        	
+    		Bundle mybundle = new Bundle();         
+            mybundle.putInt("key", key);
+            
+            Fragment newFragment = new Friend_Add_Achievement_Fragment();
+            newFragment.setArguments(mybundle);
+  
+            mActivity.pushFragments(AppConstants.TAB_F, newFragment,true,true);
+    		
+        }
+      
+    };
 	
 	//sets total points
 	public void setPointTotal()
@@ -313,9 +346,9 @@ public class Friend_Achievement_List_Fragment extends SherlockFragment {
                 // Loop through all Results
                 do {
                 	//can take out if later when add not null to database
-                	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_POINTS)) != null)
+                	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_POINTS)) != null)
                 	{
-                		getpoint1 = cursor.getInt(cursor.getColumnIndex(myDB.COLUMN_POINTS));
+                		getpoint1 = cursor.getInt(cursor.getColumnIndex(ACHDatabase.COLUMN_POINTS));
                 		if(getpoint1 >=0)
                 		{
                 			point_total = point_total + getpoint1;
@@ -333,9 +366,9 @@ public class Friend_Achievement_List_Fragment extends SherlockFragment {
                 // Loop through all Results
                 do {
                 	//can take out if later when add not null to database
-                	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_POINTS)) != null)
+                	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_POINTS)) != null)
                 	{
-                		getpoint2 = cursor.getInt(cursor.getColumnIndex(myDB.COLUMN_POINTS));
+                		getpoint2 = cursor.getInt(cursor.getColumnIndex(ACHDatabase.COLUMN_POINTS));
                 		point = point + getpoint2;
                 	}
                 } while (cursor.moveToNext());
@@ -371,7 +404,7 @@ public class Friend_Achievement_List_Fragment extends SherlockFragment {
                 // Loop through all Results
                 do {
                 	//can take out if later when add not null to database
-                	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_ACHNAME)) != null)
+                	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_ACHNAME)) != null)
                 	{
                 		ach_total++;
                 	}
@@ -388,7 +421,7 @@ public class Friend_Achievement_List_Fragment extends SherlockFragment {
                 // Loop through all Results
                 do {
                 	//can take out if later when add not null to database
-                	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_ACHNAME)) != null)
+                	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_ACHNAME)) != null)
                 	{
                 		ach++;
                 	}
@@ -420,9 +453,9 @@ public class Friend_Achievement_List_Fragment extends SherlockFragment {
                 // Loop through all Results
                 do {
                 	//can take out if later when add not null to database
-                	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_ISCOMPLETED)) != null)
+                	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_ISCOMPLETED)) != null)
                 	{
-                		completed = cursor.getInt(cursor.getColumnIndex(myDB.COLUMN_ISCOMPLETED))>0;
+                		completed = cursor.getInt(cursor.getColumnIndex(ACHDatabase.COLUMN_ISCOMPLETED))>0;
                 	}
                 } while (cursor.moveToNext()); 
             }
@@ -448,9 +481,9 @@ public class Friend_Achievement_List_Fragment extends SherlockFragment {
                 // Loop through all Results
                 do {
                 	//can take out if later when add not null to database
-                	if(cursor.getString(cursor.getColumnIndex(myDB.COLUMN_NUMBEROFCOMP)) != null)
+                	if(cursor.getString(cursor.getColumnIndex(ACHDatabase.COLUMN_NUMBEROFCOMP)) != null)
                 	{
-                		ofcompleted = cursor.getInt(cursor.getColumnIndex(myDB.COLUMN_NUMBEROFCOMP));
+                		ofcompleted = cursor.getInt(cursor.getColumnIndex(ACHDatabase.COLUMN_NUMBEROFCOMP));
                 	}
                 } while (cursor.moveToNext());
             }

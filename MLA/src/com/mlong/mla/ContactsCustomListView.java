@@ -34,6 +34,7 @@ public class ContactsCustomListView extends ArrayAdapter<ContactItem> {
 	 * we are overriding the getView method here - this is what defines how each
 	 * list item will look.
 	 */
+	@Override
 	public View getView(int position, View convertView, ViewGroup parent){
 
 		// assign the view we are converting to a local variable
@@ -85,7 +86,7 @@ public class ContactsCustomListView extends ArrayAdapter<ContactItem> {
 	
 
 	ContactItem getselectedposition(int position) {
-        return ((ContactItem) getItem(position));
+        return (getItem(position));
 }
 	 
 	ArrayList<ContactItem> getcheckedposition() {
@@ -98,7 +99,8 @@ public class ContactsCustomListView extends ArrayAdapter<ContactItem> {
  }
 
  OnCheckedChangeListener myCheckChangList = new OnCheckedChangeListener() {
-         public void onCheckedChanged(CompoundButton buttonView,
+         @Override
+		public void onCheckedChanged(CompoundButton buttonView,
                          boolean isChecked) {
                  getselectedposition((Integer) buttonView.getTag()).ischeckedflag = isChecked;
          }

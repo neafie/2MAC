@@ -3,13 +3,10 @@ package com.mlong.mla;
 import java.util.Calendar;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
 import android.support.v4.app.DialogFragment;
-import android.view.Menu;
-import android.widget.DatePicker;
 
 public class Date_pick extends DialogFragment{
 

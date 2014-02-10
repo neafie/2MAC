@@ -1,10 +1,6 @@
 package com.mlong.mla;
 
-import com.actionbarsherlock.app.SherlockFragment;
-
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
