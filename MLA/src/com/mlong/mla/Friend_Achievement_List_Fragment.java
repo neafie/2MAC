@@ -166,38 +166,8 @@ public class Friend_Achievement_List_Fragment extends BaseFragment {
         return view;
 	}
 	
-	
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-	    // TODO Add your menu entries here
-		deleteList = menu.add("Delete List");
-		
-	    super.onCreateOptionsMenu(menu, inflater);
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-	    if (item.getItemId() == deleteList.getItemId()) {	     
-	        // EITHER CALL THE METHOD HERE OR DO THE FUNCTION DIRECTLY
-	        deleteList();
 
-	        return true;
-	    }
-	    else{
-	        return super.onOptionsItemSelected(item);
-	    }
-	}
-	
-	public void deleteList()
-	{
-		ACHDatabase myDB = new ACHDatabase(getActivity());
-		myDB.open();
-		myDB.delete_list(key);
-		myDB.close();
 
-		mActivity.onBackPressed(); 
-	}
-	
 	//When you click on an achievement
     private OnItemClickListener listener = new AdapterView.OnItemClickListener() {
     	

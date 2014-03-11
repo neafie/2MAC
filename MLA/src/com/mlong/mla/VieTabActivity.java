@@ -6,9 +6,10 @@ import java.util.HashMap;
 import java.util.Stack;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Window;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.mlong.mla.AddDialog.NoticeDialogListener;
-
 import android.app.TimePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Intent;
@@ -48,11 +49,11 @@ OnDateSetListener,TimePickerDialog.OnTimeSetListener{
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-    	//removes title bar at top
-    	requestWindowFeature(Window.FEATURE_NO_TITLE);
+    	
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_tab);
      
+        
         mStacks             =   new HashMap<String, Stack<Fragment>>();
         mStacks.put(AppConstants.TAB_P, new Stack<Fragment>());
         mStacks.put(AppConstants.TAB_C, new Stack<Fragment>());
@@ -69,6 +70,90 @@ OnDateSetListener,TimePickerDialog.OnTimeSetListener{
        
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getSupportMenuInflater();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        
+        menu.add("Profile")
+        .setIcon(R.drawable.profile)
+        .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+           
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				profileDialog myprofileDialog = new profileDialog();
+				myprofileDialog.show(getSupportFragmentManager(), "My Profile");
+        		return true;
+			}
+        })
+        .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        
+        menu.add("Login")
+        .setIcon(R.drawable.login)
+        .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+           
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				// This method will be executed once the timer is over
+           	 	Intent i = new Intent(getBaseContext(),  LoginActivity.class);
+                startActivity(i);
+        		return true;
+			}
+        })
+        .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        
+        menu.add("Approvals")
+        .setIcon(R.drawable.check)
+        .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+           
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				
+               
+        		return true;
+			}
+        })
+        .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        
+        menu.add("Friends")
+        .setIcon(R.drawable.friends)
+        .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+           
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				
+        		return true;
+			}
+        })
+        .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        
+        menu.add("Rate Us")
+        .setIcon(R.drawable.rate_us)
+        .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+           
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				
+        		return true;
+			}
+        })
+        .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+       
+        inflater.inflate(R.menu.main, menu);
+       
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+      switch (item.getItemId()) {
+        case android.R.id.home:
+        	onBackPressed();  	
+      }
+      return true;
+      
+    }
+    
     /*private View createTabView(final int id) {
         View view = LayoutInflater.from(this).inflate(R.layout.tabs_icon, null);
         ImageView imageView =   (ImageView) view.findViewById(R.id.tab_icon);
@@ -301,5 +386,5 @@ OnDateSetListener,TimePickerDialog.OnTimeSetListener{
 		detailspage.takePhoto(v);
 	}
 	
-    	
+
 }

@@ -61,7 +61,7 @@ public class AchCustomListview extends ArrayAdapter<Item> {
 
 			TextView tt = (TextView) v.findViewById(R.id.toptext);
 			TextView mt = (TextView) v.findViewById(R.id.middletext);
-			trophy = (ImageView) v.findViewById(R.id.imageView1);
+			trophy = (ImageView) v.findViewById(R.id.listIcon);
 			TextView ld = (TextView) v.findViewById(R.id.tv_listdate);
 			TextView lt = (TextView) v.findViewById(R.id.tv_listtime);
 

@@ -1,45 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="#DEE6E9" >
 
-<TableLayout 
+<TableLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content"
+    android:background="#DEE6E9" >
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@layout/header_gradient"
+        android:orientation="horizontal"
+        android:paddingBottom="5dip"
+        android:paddingTop="5dip" >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/vie_logo" />
+    </LinearLayout>
     
    <TableRow>
-   <TextView 
+
+   <TextView
+       android:id="@+id/tv_fname"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:id="@+id/tv_fname"
        android:gravity="left"
        android:text="Add a List"
-       android:textSize="20sp"
-       />
+       android:textColor="#372c24"
+       android:textSize="20sp" />
   
    <EditText
        android:id="@+id/et_aname"
+       style="android:buttonStyle"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
+       android:layout_weight="1"
        android:ems="10"
        android:inputType="textCapWords"
-       android:layout_weight="1"
-       >
-	
+       android:singleLine="true"
+       android:textColor="#4B5C66"
+        >
        
        <requestFocus />
    </EditText>
    </TableRow>
    
  <TableRow>
-   <TextView 
+
+   <TextView
+       android:id="@+id/tv_listdesc"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:id="@+id/tv_listdesc"
        android:gravity="left"
        android:text="Description"
-       android:textSize="20sp"
-       />
+       android:textColor="#372c24"
+       android:textSize="20sp" />
   
    <EditText
        android:id="@+id/et_listdesc"

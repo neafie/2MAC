@@ -5,9 +5,10 @@
     android:layout_height="match_parent">
 
    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="#DEE6E9"
+       android:orientation="vertical" >
 
         <TabWidget
             android:id="@android:id/tabs"

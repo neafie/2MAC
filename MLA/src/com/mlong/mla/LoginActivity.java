@@ -55,7 +55,16 @@ public class LoginActivity extends Activity {
 			public void onClick(View view) {
                 String email = inputEmail.getText().toString();
                 String password = inputPassword.getText().toString();
-                new MyAsyncTask().execute(email, password);
+                //new MyAsyncTask().execute(email, password);
+                // Launch Dashboard Screen
+                Intent dashboard = new Intent(getApplicationContext(), VieTabActivity.class);
+                 
+                // Close all views before launching Dashboard
+                dashboard.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(dashboard);
+                 
+                // Close Login Screen
+                finish();
             }
         });
  

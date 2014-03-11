@@ -6,12 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.TextView;
 
 public class CommunityPage1 extends BaseFragment {
 
 	View view;
-	private Button mGotoButton;
+	private TextView mGotoButton;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -19,7 +19,7 @@ public class CommunityPage1 extends BaseFragment {
 		//setContentView(R.layout.activity_personal_page1);
 		view = inflater.inflate(R.layout.activity_community_page1, container, false);
 		
-		 mGotoButton =   (Button) view.findViewById(R.id.gotopage2);
+		 mGotoButton =   (TextView) view.findViewById(R.id.gotopage2);
 	     mGotoButton.setOnClickListener(listener);
 		
 		return view;

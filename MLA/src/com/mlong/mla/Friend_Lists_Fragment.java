@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -31,7 +32,7 @@ public class Friend_Lists_Fragment extends BaseFragment
  	private ListCustomListview m_adapter;
    
     int REMOVE;
-    
+    int forkey;
     @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class Friend_Lists_Fragment extends BaseFragment
 		
     	View view = inflater.inflate(R.layout.activity_main, container, false);
         
-		int forkey;
+		
 		Button AddList = (Button)view.findViewById(R.id.button1);
 		ListView myList;
         myList=(ListView)view.findViewById(android.R.id.list);
@@ -50,6 +51,7 @@ public class Friend_Lists_Fragment extends BaseFragment
 		
 		m_parts.clear();
 		myList.setOnItemClickListener(listener);
+		myList.setOnItemLongClickListener(Longlistener);
 
 		ACHDatabase myDB = new ACHDatabase(getActivity());
 		Cursor cursor;
@@ -127,6 +129,26 @@ public class Friend_Lists_Fragment extends BaseFragment
            
         }
     };
+    private OnItemLongClickListener Longlistener = new AdapterView.OnItemLongClickListener() {
+
+    	  @Override
+    	  public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2,
+                  long arg3) {
+    		  ListItem myitem = new ListItem();
+          	myitem = m_parts.get(arg2);
+              
+              REMOVE = arg2;
+          	
+              //gets list key from list
+
+          	forkey = myitem.getListkey();
+          
+          	//remove item to list
+    		m_parts.remove(myitem);
+          	deleteList();
+    	    return true;
+    	  }
+    	};
 	
 	public void sendMessage(View myV)
 	{
@@ -165,5 +187,15 @@ public class Friend_Lists_Fragment extends BaseFragment
 		 m_adapter.notifyDataSetChanged();
 	    }
 	}
+	
+	public void deleteList()
+	{
+		ACHDatabase myDB = new ACHDatabase(getActivity());
+		myDB.open();
+		myDB.delete_list(forkey);
+		myDB.close();
+		m_adapter.notifyDataSetChanged();
+	}
+	
 	
 }

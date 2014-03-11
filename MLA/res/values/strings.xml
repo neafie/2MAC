@@ -3,7 +3,7 @@
 
     <string name="app_name">Vie</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="next_page">"&lt;""&lt;""&lt;" Next Page "&gt;""&gt;""&gt;"</string>
     <string name="title_activity_add_list">Vie</string>
     <string name="title_activity_list_database">ListDatabase</string>
     <string name="read_permission">edu.fsu.cs.mlong.mla.provider.permission.READ_PERMISSION</string>

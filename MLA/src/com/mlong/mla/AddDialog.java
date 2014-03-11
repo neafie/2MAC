@@ -40,11 +40,11 @@ public class AddDialog extends DialogFragment {
 
 		// Use the Builder class for convenient dialog construction
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+		
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
         builder.setView(inflater.inflate(R.layout.activity_add_dialog, null))
-        	   .setMessage(R.string.app_name)
-               .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
+        	   .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
                    @Override
 				public void onClick(DialogInterface dialog, int id) {
                 	 
