@@ -22,6 +22,7 @@
         android:name="android.hardware.camera"
         android:required="false" >
     </uses-feature>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application android:allowBackup="true" android:icon="@drawable/vie_logo" android:label="@string/app_name" android:theme="@style/Theme.Vie">
         
