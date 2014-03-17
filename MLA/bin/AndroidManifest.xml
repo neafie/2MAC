@@ -53,7 +53,8 @@
         <activity
             android:name="com.mlong.mla.Friend_Add_Achievement_Fragment"
             android:label="@string/title_activity_add_list"
-            android:parentActivityName="com.mlong.mla" >
+            android:parentActivityName="com.mlong.mla"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mlong.mla" />
@@ -62,6 +63,7 @@
             android:name="com.mlong.mla.Friend_Achievement_List_Fragment"
             android:configChanges="orientation"
             android:label="@string/title_activity_add_ach" 
+            
             >
         </activity>
         <activity

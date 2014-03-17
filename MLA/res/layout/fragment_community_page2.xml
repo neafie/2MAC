@@ -1,15 +1,209 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DEE6E9"
-    tools:context=".CommunityPage2" >
+    android:gravity="center"
+    tools:context=".CommunityPage1" >
 
-    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="fill_parent"
+        android:layout_height="90dip"
+        android:layout_alignParentBottom="true"
+        android:background="@layout/footer_comm"
+        android:orientation="horizontal" >
+    </LinearLayout>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Community Page 2" />
+        android:id="@+id/gotopage2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/footer"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"
+        android:text="@string/next_page"
+        android:textColor="#008FD5"
+        android:textSize="20dip" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ratingBar1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="false"
+        android:gravity="center"
+        android:text="Rate This Achievement:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#372c24" />
+
+    <RatingBar
+        android:id="@+id/ratingBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/gotopage2"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="Rate this Achievment"
+        android:gravity="center"
+        android:max="5"
+        android:maxHeight="30dp"
+        android:numStars="5"
+        android:rating="3"
+        android:stepSize="1" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/imageView1"
+        android:layout_marginTop="26dp"
+        android:layout_toRightOf="@+id/imageView1"
+        android:gravity="center"
+        android:text="Donkey Punch a 3rd Grader"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#372c24" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tv_desc_s"
+        android:gravity="center"
+        android:hint="?android:attr/textAppearanceSmall"
+        android:text="Please do not donkey punch a 3rd grader"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#372c24"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/b_addcomp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/TextView01"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:text="Completed!" />
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1" />
+
+    <TextView
+        android:id="@+id/tv_points_s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/progressBar1"
+        android:text="Points: " />
+
+    <TextView
+        android:id="@+id/tv_points_i"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_points_s"
+        android:layout_alignBottom="@+id/tv_points_s"
+        android:layout_toRightOf="@+id/tv_points_s"
+        android:text="POI" />
+
+    <ProgressBar
+        android:id="@+id/ProgressBar01"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/imageView1" />
+
+    <TextView
+        android:id="@+id/tv_desc_s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ProgressBar01"
+        android:text="Description: " />
+
+    <TextView
+        android:id="@+id/tv_time_remain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/b_addcomp"
+        android:layout_alignParentLeft="true"
+        android:text="Time Remaining: " />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/b_addcomp"
+        android:layout_toRightOf="@+id/tv_time_remain"
+        android:text="Day" />
+
+    <TextView
+        android:id="@+id/tv_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/b_addcomp"
+        android:layout_toRightOf="@+id/tv_time"
+        android:text="Hour" />
+
+    <TextView
+        android:id="@+id/tv_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/b_addcomp"
+        android:layout_toRightOf="@+id/tv_hour"
+        android:text="Min" />
+
+    <TextView
+        android:id="@+id/tv_com2_i"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/b_addcomp"
+        android:layout_alignParentRight="true"
+        android:text="COMP2" />
+
+    <TextView
+        android:id="@+id/tv_com2_s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/b_addcomp"
+        android:layout_toLeftOf="@+id/tv_numb_i"
+        android:text="Completions: " />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/footprints_black" />
+
+    <TextView
+        android:id="@+id/tv_numb_i"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_com_s"
+        android:layout_alignBottom="@+id/tv_com_s"
+        android:layout_alignParentRight="true"
+        android:text="NUMB" />
+
+    <TextView
+        android:id="@+id/tv_com_s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/tv_com2_s"
+        android:layout_below="@+id/progressBar1"
+        android:text="Completions Needed: " />
+
+</RelativeLayout>

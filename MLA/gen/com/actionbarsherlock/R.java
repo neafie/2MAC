@@ -145,6 +145,12 @@ public final class R {
 		public static final int abs__search_view_text_min_width = 0x7f08000b;
 	}
 	public static final class drawable {
+		public static final int ab_background_textured_vie = 0x7f020000;
+		public static final int ab_bottom_solid_vie = 0x7f020001;
+		public static final int ab_solid_vie = 0x7f020002;
+		public static final int ab_stacked_solid_vie = 0x7f020003;
+		public static final int ab_texture_tile_vie = 0x7f020004;
+		public static final int ab_transparent_vie = 0x7f020005;
 		public static final int abs__ab_bottom_solid_dark_holo = 0x7f020006;
 		public static final int abs__ab_bottom_solid_inverse_holo = 0x7f020007;
 		public static final int abs__ab_bottom_solid_light_holo = 0x7f020008;
@@ -257,6 +263,32 @@ public final class R {
 		public static final int abs__textfield_searchview_right_holo_dark = 0x7f020073;
 		public static final int abs__textfield_searchview_right_holo_light = 0x7f020074;
 		public static final int abs__toast_frame = 0x7f020075;
+		public static final int btn_cab_done_default_vie = 0x7f020077;
+		public static final int btn_cab_done_focused_vie = 0x7f020078;
+		public static final int btn_cab_done_pressed_vie = 0x7f020079;
+		public static final int btn_cab_done_vie = 0x7f02007a;
+		public static final int cab_background_bottom_vie = 0x7f02007b;
+		public static final int cab_background_top_vie = 0x7f02007c;
+		public static final int list_focused_vie = 0x7f020091;
+		public static final int list_pressed_vie = 0x7f020092;
+		public static final int menu_dropdown_panel_vie = 0x7f020094;
+		public static final int progress_bg_vie = 0x7f02009a;
+		public static final int progress_horizontal_vie = 0x7f02009b;
+		public static final int progress_primary_vie = 0x7f02009c;
+		public static final int progress_secondary_vie = 0x7f02009d;
+		public static final int selectable_background_vie = 0x7f0200a5;
+		public static final int spinner_ab_default_vie = 0x7f0200a8;
+		public static final int spinner_ab_disabled_vie = 0x7f0200a9;
+		public static final int spinner_ab_focused_vie = 0x7f0200aa;
+		public static final int spinner_ab_pressed_vie = 0x7f0200ab;
+		public static final int spinner_background_ab_vie = 0x7f0200ac;
+		public static final int tab_indicator_ab_vie = 0x7f0200ad;
+		public static final int tab_selected_focused_vie = 0x7f0200ae;
+		public static final int tab_selected_pressed_vie = 0x7f0200af;
+		public static final int tab_selected_vie = 0x7f0200b0;
+		public static final int tab_unselected_focused_vie = 0x7f0200b1;
+		public static final int tab_unselected_pressed_vie = 0x7f0200b2;
+		public static final int tab_unselected_vie = 0x7f0200b3;
 	}
 	public static final class id {
 		public static final int abs__action_bar = 0x7f050020;
@@ -335,8 +367,8 @@ public final class R {
 		public static final int abs__search_dropdown_item_icons_2line = 0x7f030012;
 		public static final int abs__search_view = 0x7f030013;
 		public static final int abs__simple_dropdown_hint = 0x7f030014;
-		public static final int sherlock_spinner_dropdown_item = 0x7f03002d;
-		public static final int sherlock_spinner_item = 0x7f03002e;
+		public static final int sherlock_spinner_dropdown_item = 0x7f03002f;
+		public static final int sherlock_spinner_item = 0x7f030030;
 	}
 	public static final class string {
 		public static final int abs__action_bar_home_description = 0x7f0a0000;
