@@ -35,7 +35,7 @@
         android:layout_height="90dip"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:background="@layout/footer_repeat"
+        android:background="@layout/footer_friends"
         android:orientation="horizontal" >
 
     </LinearLayout>
