@@ -504,9 +504,10 @@ int layout fragment_friend__contact__list 0x7f030028
 int layout fragment_friend__icon__page 0x7f030029
 int layout header_gradient 0x7f03002a
 int layout login 0x7f03002b
-int layout register 0x7f03002c
-int layout sherlock_spinner_dropdown_item 0x7f03002d
-int layout sherlock_spinner_item 0x7f03002e
+int layout personal_add_ach 0x7f03002c
+int layout register 0x7f03002d
+int layout sherlock_spinner_dropdown_item 0x7f03002e
+int layout sherlock_spinner_item 0x7f03002f
 int menu achdatabase 0x7f0c0000
 int menu achievment_page 0x7f0c0001
 int menu add_ach 0x7f0c0002

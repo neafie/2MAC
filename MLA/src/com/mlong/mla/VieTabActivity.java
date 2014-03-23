@@ -41,7 +41,9 @@ OnDateSetListener,TimePickerDialog.OnTimeSetListener{
 	
 	
     Friend_Lists_Fragment listpageFragment;
+    Personal_Lists_Fragment pListpageFragment;
     Friend_Add_Achievement_Fragment addachpage;
+    Personal_Add_Achievement_Fragment pAddachpage;
     Friend_Achievement_Details_Fragment detailspage;
     Friend_Achievement_List_Fragment achlistpage;
     CommunityPage1 communitypage;
@@ -215,7 +217,7 @@ OnDateSetListener,TimePickerDialog.OnTimeSetListener{
            *    We are adding a new fragment which is not present in stack. So add to stack is true.
            */
           if(tabId.equals(AppConstants.TAB_P)){
-            pushFragments(tabId, new PersonalPage1(), false,true);
+            pushFragments(tabId, new Personal_Lists_Fragment(), false,true);
           }else if(tabId.equals(AppConstants.TAB_C)){
             pushFragments(tabId, new CommunityPage1(), false,true);
           }else if(tabId.equals(AppConstants.TAB_F)){
@@ -316,10 +318,20 @@ OnDateSetListener,TimePickerDialog.OnTimeSetListener{
 	@Override
 	public void onDialogPositiveClick(DialogFragment dialog) {
 		// TODO Auto-generated method stub
-		listpageFragment = (Friend_Lists_Fragment) mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
-		if(listpageFragment != null)
-		{
-			listpageFragment.positiveClick(dialog);
+		if(mCurrentTab.equals(AppConstants.TAB_F)) {
+			listpageFragment = (Friend_Lists_Fragment) mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
+			if(listpageFragment != null)
+			{
+				listpageFragment.positiveClick(dialog);
+			}
+		}
+		
+		if(mCurrentTab.equals(AppConstants.TAB_P)) {
+			pListpageFragment = (Personal_Lists_Fragment) mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
+			if(pListpageFragment != null)
+			{
+				pListpageFragment.positiveClick(dialog);
+			}
 		}
 	}
 
@@ -332,46 +344,92 @@ OnDateSetListener,TimePickerDialog.OnTimeSetListener{
 	@Override
 	public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 		// TODO Auto-generated method stub
-		addachpage = (Friend_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
-		addachpage.myonTimeSet(view, hourOfDay, minute);
+		if( mCurrentTab.equals(AppConstants.TAB_F )) {
+			addachpage = (Friend_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
+			addachpage.myonTimeSet(view, hourOfDay, minute);
+		}
+		
+		if( mCurrentTab.equals(AppConstants.TAB_P)) {
+			pAddachpage = (Personal_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size()-1);
+			pAddachpage.myonTimeSet(view, hourOfDay, minute);
+		}
 	}
 
 	@Override
 	public void onDateSet(DatePicker view, int year, int monthOfYear,
 			int dayOfMonth) {
 		// TODO Auto-generated method stub
-		addachpage = (Friend_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
-		addachpage.myonDateSet(view, year, monthOfYear, dayOfMonth);
+		if(mCurrentTab.equals(AppConstants.TAB_F)) {
+			addachpage = (Friend_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
+			addachpage.myonDateSet(view, year, monthOfYear, dayOfMonth);
+		}
+		
+		if(mCurrentTab.equals(AppConstants.TAB_P)) {
+			pAddachpage = (Personal_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
+			pAddachpage.myonDateSet(view, year, monthOfYear, dayOfMonth);
+		}
 	}
 	
 	public void myPickDate(View v)
 	{
-		addachpage = (Friend_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
-		addachpage.myPickDate(v);
+		if(mCurrentTab.equals(AppConstants.TAB_F)) {
+			addachpage = (Friend_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
+			addachpage.myPickDate(v);
+		}
+		
+		if(mCurrentTab.equals(AppConstants.TAB_P)) {
+			pAddachpage = (Personal_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
+			pAddachpage.myPickDate(v);
+		}
 	}
 	
 	public void myPickTime(View v)
 	{
-		addachpage = (Friend_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
-		addachpage.myPickTime(v);
+		if(mCurrentTab.equals(AppConstants.TAB_F)) {
+			addachpage = (Friend_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
+			addachpage.myPickTime(v);
+		}
+		
+		if(mCurrentTab.equals(AppConstants.TAB_P)) {
+			pAddachpage = (Personal_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size()-1 );
+			pAddachpage.myPickTime(v);
+		}
 	}
     
 	public void RadioClick(View v)
 	{
-		addachpage = (Friend_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
-		addachpage.RadioClick(v);
+		if(mCurrentTab.equals(AppConstants.TAB_F)) {
+			addachpage = (Friend_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
+			addachpage.RadioClick(v);
+		}
+		
+		if(mCurrentTab.equals(AppConstants.TAB_P)) {
+			pAddachpage = (Personal_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
+			pAddachpage.RadioClick(v);
+		}
 	}
 	
 	public void onePerson(View v)
 	{
-		addachpage = (Friend_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
-		addachpage.onePerson(v);
+		if(mCurrentTab.equals(AppConstants.TAB_F)) {
+			addachpage = (Friend_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
+			addachpage.onePerson(v);
+		}
+		
+		
 	}
 	
 	public void AddAch(View v)
 	{
-		addachpage = (Friend_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
-		addachpage.AddAch(v);
+		if(mCurrentTab.equals(AppConstants.TAB_F)) {
+			addachpage = (Friend_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
+			addachpage.AddAch(v);
+		}
+		
+		if(mCurrentTab.equals(AppConstants.TAB_P)) {
+			pAddachpage = (Personal_Add_Achievement_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
+			pAddachpage.AddAch(v);
+		}
 	}
 	
 	public void delete(View v)

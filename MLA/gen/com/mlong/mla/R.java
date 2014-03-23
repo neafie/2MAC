@@ -1181,9 +1181,10 @@ containing a value of this type.
         public static final int fragment_friend__icon__page=0x7f030029;
         public static final int header_gradient=0x7f03002a;
         public static final int login=0x7f03002b;
-        public static final int register=0x7f03002c;
-        public static final int sherlock_spinner_dropdown_item=0x7f03002d;
-        public static final int sherlock_spinner_item=0x7f03002e;
+        public static final int personal_add_ach=0x7f03002c;
+        public static final int register=0x7f03002d;
+        public static final int sherlock_spinner_dropdown_item=0x7f03002e;
+        public static final int sherlock_spinner_item=0x7f03002f;
     }
     public static final class menu {
         public static final int achdatabase=0x7f0c0000;
