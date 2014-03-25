@@ -272,10 +272,10 @@ public class Personal_Achievement_List_Fragment extends BaseFragment {
         		mybundle.putString("time", "");
     		}
 
-    		Fragment newFragment = new Friend_Achievement_Details_Fragment();
+    		Fragment newFragment = new Personal_Achievement_Details_Fragment();
             newFragment.setArguments(mybundle);
             
-            mActivity.pushFragments(AppConstants.TAB_F, newFragment,true,true);
+            mActivity.pushFragments(AppConstants.TAB_P, newFragment,true,true);
         }
     };
     
@@ -286,10 +286,10 @@ public class Personal_Achievement_List_Fragment extends BaseFragment {
     		Bundle mybundle = new Bundle();         
             mybundle.putInt("key", key);
             
-            Fragment newFragment = new Friend_Add_Achievement_Fragment();
+            Fragment newFragment = new Personal_Add_Achievement_Fragment();
             newFragment.setArguments(mybundle);
   
-            mActivity.pushFragments(AppConstants.TAB_F, newFragment,true,true);
+            mActivity.pushFragments(AppConstants.TAB_P, newFragment,true,true);
     		
         }
       

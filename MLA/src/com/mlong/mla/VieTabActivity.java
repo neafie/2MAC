@@ -45,6 +45,7 @@ OnDateSetListener,TimePickerDialog.OnTimeSetListener{
     Friend_Add_Achievement_Fragment addachpage;
     Personal_Add_Achievement_Fragment pAddachpage;
     Friend_Achievement_Details_Fragment detailspage;
+    Personal_Achievement_Details_Fragment pDetailsPage;
     Friend_Achievement_List_Fragment achlistpage;
     CommunityPage1 communitypage;
     
@@ -434,14 +435,30 @@ OnDateSetListener,TimePickerDialog.OnTimeSetListener{
 	
 	public void delete(View v)
 	{
-		detailspage = (Friend_Achievement_Details_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
-		detailspage.delete(v);
+		if(mCurrentTab.equals(AppConstants.TAB_F)) {
+			detailspage = (Friend_Achievement_Details_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
+			detailspage.delete(v);
+		}
+		
+		if(mCurrentTab.equals(AppConstants.TAB_P)) {
+			pDetailsPage = (Personal_Achievement_Details_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
+			pDetailsPage.delete(v);
+		}
+		
 	}
 	
 	public void takePhoto(View v)
 	{
-		detailspage = (Friend_Achievement_Details_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
-		detailspage.takePhoto(v);
+		if(mCurrentTab.equals(AppConstants.TAB_F)) {
+			detailspage = (Friend_Achievement_Details_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
+			detailspage.takePhoto(v);
+		}
+		
+		if(mCurrentTab.equals(AppConstants.TAB_P)) {
+			pDetailsPage = (Personal_Achievement_Details_Fragment)mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() -1);
+			pDetailsPage.takePhoto(v);
+		}
+		
 	}
 	
 
