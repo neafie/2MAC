@@ -29,7 +29,7 @@ public class Personal_Lists_Fragment extends BaseFragment
 	public final static int requestcode = 1;
 	
 	private ArrayList<ListItem> m_parts = new ArrayList<ListItem>();
- 	private ListCustomListview m_adapter;
+ 	private PersonalListCustomListview m_adapter;
    
     int REMOVE;
     int forkey;
@@ -38,7 +38,7 @@ public class Personal_Lists_Fragment extends BaseFragment
             Bundle savedInstanceState) {
 		
 		
-    	View view = inflater.inflate(R.layout.activity_main, container, false);
+    	View view = inflater.inflate(R.layout.personal_lists_page, container, false);
         
 		
 		Button AddList = (Button)view.findViewById(R.id.button1);
@@ -46,7 +46,7 @@ public class Personal_Lists_Fragment extends BaseFragment
         myList=(ListView)view.findViewById(android.R.id.list);
 		myList.setChoiceMode(1);
         
-		m_adapter = new ListCustomListview(getActivity(), R.layout.activity_list_custom_listview, m_parts);
+		m_adapter = new PersonalListCustomListview(getActivity(), R.layout.personal_list_custom_listview, m_parts);
         myList.setAdapter(m_adapter);
 		
 		m_parts.clear();

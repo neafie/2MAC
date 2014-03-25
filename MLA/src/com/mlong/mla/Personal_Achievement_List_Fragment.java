@@ -47,7 +47,7 @@ public class Personal_Achievement_List_Fragment extends BaseFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 		
-		view = inflater.inflate(R.layout.activity_ach_list, container, false);
+		view = inflater.inflate(R.layout.personal_activity_ach_list, container, false);
 		setHasOptionsMenu(true);
 		
 		AppConstants.icon = null;
@@ -147,20 +147,6 @@ public class Personal_Achievement_List_Fragment extends BaseFragment {
 		
 		cursor.close();
         myDB.close();		
-        
-        Button b_findContacts = (Button) view.findViewById(R.id.button2);
-        b_findContacts.setOnClickListener(new View.OnClickListener() {
-            @Override
-			public void onClick(View v) {
-            	Fragment newFragment = new Friend_Contact_List();
-            	Bundle mybundle = new Bundle();
-            	mybundle.putInt("listkey", key);
-            	newFragment.setArguments(mybundle);
-                mActivity.pushFragments(AppConstants.TAB_F, newFragment,true,true);
-            	
-            }
-           
-        });
         
         
         return view;

@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DEE6E9"
+    tools:context=".Friend_Lists_Fragment" >
+
+    <!-- Footer Start -->
+
+
+    <!-- Footer Ends -->
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/button1"
+            android:orientation="vertical" >
+
+		 <ListView
+		     android:id="@id/android:list"
+		     android:layout_width="match_parent"
+		     android:layout_height="match_parent"
+		     android:layout_alignParentLeft="true"
+		     android:layout_alignParentTop="true" >
+
+		 </ListView>
+
+        </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="fill_parent"
+        android:layout_height="90dip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@layout/footer_friends"
+        android:orientation="horizontal" >
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/footer"
+        android:layout_alignParentLeft="true"
+        android:text="Add List" />
+
+</RelativeLayout>

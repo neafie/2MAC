@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DEE6E9"
+    android:paddingLeft="5dp"
+    android:paddingBottom="5dp"
+    tools:context=".ListCustomListview" >
+
+   <TextView
+       android:id="@+id/listmiddletext"
+       android:layout_width="wrap_content"
+       android:layout_height="26dip"
+       android:layout_alignLeft="@+id/listtoptext"
+       android:layout_below="@+id/listtoptext"
+       android:gravity="center_vertical"
+       android:paddingRight="20dp"
+       android:text="Description" />
+
+   <ImageView
+       android:id="@+id/theListIcon"
+       android:layout_width="52dip"
+       android:layout_height="52dip"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentTop="true"
+       android:paddingRight="5dp"
+       android:paddingTop="5dp"
+       android:src="@drawable/turtle_gray" />
+
+   <TextView
+       android:id="@+id/listtoptext"
+       android:layout_width="wrap_content"
+       android:layout_height="26dip"
+       android:layout_alignTop="@+id/theListIcon"
+       android:layout_toRightOf="@+id/theListIcon"
+       android:ellipsize="marquee"
+       android:paddingRight="20dp"
+       android:paddingTop="5dp"
+       android:singleLine="true"
+       android:text="Name"
+       android:textStyle="bold" />
+
+   
+   <TextView
+       android:id="@+id/TextView01"
+       android:layout_width="wrap_content"
+       android:layout_height="26dip"
+       android:layout_alignParentTop="true"
+       android:layout_toRightOf="@+id/listmiddletext"
+       android:ellipsize="marquee"
+       android:gravity="center_vertical"
+       android:paddingRight="20dp"
+       android:singleLine="true"
+       android:text="Current Points:"
+       android:textSize="10sp"
+       android:textStyle="bold" />
+
+ 
+</RelativeLayout>
