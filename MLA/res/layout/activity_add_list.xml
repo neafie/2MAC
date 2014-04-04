@@ -108,13 +108,13 @@
    </TableRow>
       
    <TableRow>
+
        <Button
-        android:id="@+id/buttonach"
-        android:layout_width="135dp"
-        android:layout_height="wrap_content"
-        android:text="Add Acheivment" 
-        android:onClick="AddList"/>
-       
+           android:id="@+id/buttonach"
+           android:layout_width="135dp"
+           android:layout_height="wrap_content"
+           android:onClick="AddList"
+           android:text="Add Achievment" />
        
    </TableRow>
 </TableLayout>

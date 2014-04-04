@@ -4,150 +4,219 @@
     android:layout_height="fill_parent"
     android:background="#DEE6E9" >
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    <TableLayout
+        android:id="@+id/TableLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-    <TextView 
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:id="@+id/tv_fname"
-       android:gravity="left"
-       android:text="Achievement Name"
-       android:textSize="20sp"
-       />
-    
-    <EditText
-        android:id="@+id/et_aname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:inputType="textCapWords" />
-	    
-   <TextView 
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:id="@+id/tv_desc"
-       android:gravity="left"
-       android:text="Description"
-       android:textSize="20sp"
-       />
-  
-  <EditText
-       android:id="@+id/et_desc"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:ems="10"
-       android:inputType="textCapSentences"
-       android:layout_weight="1"
-       >
-	
-   </EditText>
-   
-   <TextView 
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:id="@+id/tv_points"
-       android:gravity="left"
-       android:text="Points"
-       android:textSize="20sp"
-       />
-  
-   <EditText
-       android:id="@+id/et_points"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:ems="10"
-       android:inputType="number|numberSigned"
-       android:layout_weight="1"
-       >
-	
-       
-       
-   </EditText>
+        <TableRow
+            android:id="@+id/tableRow10"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
 
-   <TextView 
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:id="@+id/tv_numb"
-       android:gravity="left"
-       android:text="Completions Needed"
-       android:textSize="20sp"
-       />
-  
-  <EditText
-       android:id="@+id/et_numb"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:ems="10"
-       android:inputType="number"
-       android:layout_weight="1"
-       >
-	
+            <TextView
+                android:id="@+id/tv_fname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="left"
+                android:text="Achievement Name"
+                android:textColor="#372c24" />
 
-   </EditText>
+            <EditText
+                android:id="@+id/et_aname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textCapWords"
+                android:textAppearance="?android:attr/textAppearanceSmallInverse" />
+        </TableRow>
 
-  <RadioButton
-      android:id="@+id/radioButton1"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:onClick="RadioClick"
-      android:text="Set a Date and Time" />
-      
-   <Button 
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:id="@+id/b_dpick"
-       android:text="Pick Date"
-       android:onClick="myPickDate"
-       />
-   
-    <TextView 
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:id="@+id/tv_myDate"
-       android:gravity="left"
-       android:textSize="20sp"
-       />
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
 
-   <Button
-       android:id="@+id/b_tpick"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Pick Time"
-       android:onClick="myPickTime" 
-       />
+            <TextView
+                android:id="@+id/tv_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="left"
+                android:text="Description"
+                android:textColor="#372c24" />
 
-   <TextView 
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:id="@+id/tv_myTime"
-       android:gravity="left"
-       android:textSize="20sp"
-       />
+            <EditText
+                android:id="@+id/et_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textCapSentences"
+                android:textAppearance="?android:attr/textAppearanceSmallInverse" />
+        </TableRow>
 
-   <Button
-       android:id="@+id/buttonicon"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Add Icon" 
-       android:onClick="addIcon"
-       />
+        <TableRow
+            android:id="@+id/tableRow6"
+            android:layout_width="wrap_content" >
 
-   <ImageView
-       android:id="@+id/iv_icon"
-       android:layout_width="50dp"
-       android:layout_height="50dp"
-        />
-   
-       <Button
-           android:id="@+id/buttonach"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:onClick="AddAch"
-           android:text="Add Achievement" />
-       
-</LinearLayout>
+            <TextView
+                android:id="@+id/tv_points"
+                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="left"
+                android:text="Points"
+                android:textColor="#372c24" />
+
+            <EditText
+                android:id="@+id/et_points"
+                android:layout_weight="1"
+                android:inputType="number|numberSigned"
+                android:textAppearance="?android:attr/textAppearanceSmallInverse" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow9"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/tv_numb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="left"
+                android:text="Completions Needed"
+                android:textColor="#372c24" />
+
+            <EditText
+                android:id="@+id/et_numb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="?android:attr/textAppearanceSmallInverse" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent" >
+
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/buttonicon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="addIcon"
+                android:text="Add Icon" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow8"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onePerson"
+                android:text="One Person Complete"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#372c24" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="RadioClick"
+                android:text="Set a Date and Time"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#372c24" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/tv_myDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_myTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow7"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/b_dpick"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="myPickDate"
+                android:text="Pick Date" />
+
+            <Button
+                android:id="@+id/b_tpick"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="myPickTime"
+                android:text="Pick Time" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/buttonach"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="AddAch"
+                android:text="Add Achievement" />
+        </TableRow>
+    </TableLayout>
+
 </ScrollView>

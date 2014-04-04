@@ -51,10 +51,12 @@
           android:padding="10dip"
           android:layout_below="@id/header">
           <!-- Full Name Label -->
-          <TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="Full Name"/>
+
+          <TextView
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:text="Username"
+              android:textColor="#372c24" />
 
           <EditText
               android:id="@+id/registerName"
