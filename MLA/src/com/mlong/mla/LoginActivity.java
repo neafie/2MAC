@@ -110,7 +110,7 @@ public class LoginActivity extends Activity {
                     // Close Login Screen
                     finish();
                 }else{
-                    // Error in login
+                    // Login Error
                     loginErrorMsg.setText("Incorrect username/password");
                 }
             }
