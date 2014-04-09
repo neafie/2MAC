@@ -3,7 +3,7 @@ package com.mlong.mla;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.mlong.mla.ListItems.ListItem;
+import com.mlong.mla.PersonalListItems.PersonalListItem;
 
 
 import android.os.Bundle;
@@ -28,7 +28,7 @@ public class Personal_Lists_Fragment extends BaseFragment
 	public final static String MESSAGE = "com.mlong.mla";
 	public final static int requestcode = 1;
 	
-	private ArrayList<ListItem> m_parts = new ArrayList<ListItem>();
+	private ArrayList<PersonalListItem> m_parts = new ArrayList<PersonalListItem>();
  	private PersonalListCustomListview m_adapter;
    
     int REMOVE;
@@ -67,14 +67,24 @@ public class Personal_Lists_Fragment extends BaseFragment
              	
                 // Loop through all Results
                 do {
-                	ListItem myitem = new ListItem();
+                	PersonalListItem myitem = new PersonalListItem();
                 	String lname = cursor.getString(cursor.getColumnIndex(PersonalDB.COLUMN_LISTNAME));
                 	String ldesc = cursor.getString(cursor.getColumnIndex(PersonalDB.COLUMN_LISTDESC));
                 	forkey = Integer.parseInt(cursor.getString(cursor.getColumnIndex(PersonalDB.COLUMN_FOR)));
+                	Cursor achCursor = myDB.getpoints(forkey);
+                	int totalPoints = 0;
+                	if( achCursor.moveToFirst() ) {
+                		
+                		do {
+                			totalPoints += achCursor.getInt(achCursor.getColumnIndex(PersonalDB.COLUMN_POINTS));
+                		} while(achCursor.moveToNext());
+                	}
+                	
                 	
                 	myitem.setDescription(ldesc);
                 	myitem.setName(lname);
                 	myitem.setListkey(forkey);
+                	myitem.setPoints(totalPoints);
                 	
                 	//add item to list
             		m_parts.add(myitem);
@@ -110,7 +120,7 @@ public class Personal_Lists_Fragment extends BaseFragment
                 long arg3) {
             // TODO Auto-generated method stub
             
-            ListItem myitem = new ListItem();
+            PersonalListItem myitem = new PersonalListItem();
         	myitem = m_parts.get(arg2);
             
             REMOVE = arg2;
@@ -134,7 +144,7 @@ public class Personal_Lists_Fragment extends BaseFragment
     	  @Override
     	  public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2,
                   long arg3) {
-    		  ListItem myitem = new ListItem();
+    		  PersonalListItem myitem = new PersonalListItem();
           	myitem = m_parts.get(arg2);
               
               REMOVE = arg2;
@@ -179,10 +189,11 @@ public class Personal_Lists_Fragment extends BaseFragment
 		 myDB.createListInsert(randkey,list_name.getText().toString().trim(),list_desc.getText().toString().trim());
 		 myDB.close();
 		
-		 ListItem myitem = new ListItem();
+		 PersonalListItem myitem = new PersonalListItem();
 		 myitem.setListkey(randkey);
 		 myitem.setName(list_name.getText().toString());
 		 myitem.setDescription(list_desc.getText().toString());
+		 myitem.setPoints(0);
 		 m_parts.add(myitem); 
 		 m_adapter.notifyDataSetChanged();
 	    }

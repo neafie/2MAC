@@ -224,7 +224,7 @@ public class PersonalDB {
     	return ourcursor;
     }
     
-    //get total number of acheived points
+    //get total number of achieved points
     public Cursor getpoints(int key)
     {
     	ourcursor = ourDatabase.rawQuery("SELECT " + COLUMN_POINTS + " FROM " + TABLE_ACHESTABLE + " WHERE " + COLUMN_FOR + " = " + key + " AND " + COLUMN_ISCOMPLETED + " = " + 1, null);

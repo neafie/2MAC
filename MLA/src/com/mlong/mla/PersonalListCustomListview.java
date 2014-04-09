@@ -2,7 +2,7 @@ package com.mlong.mla;
 
 import java.util.ArrayList;
 
-import com.mlong.mla.ListItems.ListItem;
+import com.mlong.mla.PersonalListItems.PersonalListItem;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,17 +12,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class PersonalListCustomListview extends ArrayAdapter<ListItem> {
+public class PersonalListCustomListview extends ArrayAdapter<PersonalListItem> {
 
 	// declaring our ArrayList of items
-	private ArrayList<ListItem> objects;
+	private ArrayList<PersonalListItem> objects;
 	static ImageView trophy;
 
 	/* here we must override the constructor for ArrayAdapter
 	* the only variable we care about now is ArrayList<Item> objects,
 	* because it is the list of objects we want to display.
 	*/
-	public PersonalListCustomListview(Context context, int textViewResourceId, ArrayList<ListItem> objects) {
+	public PersonalListCustomListview(Context context, int textViewResourceId, ArrayList<PersonalListItem> objects) {
 		super(context, textViewResourceId, objects);
 		this.objects = objects;
 	}
@@ -31,6 +31,7 @@ public class PersonalListCustomListview extends ArrayAdapter<ListItem> {
 	 * we are overriding the getView method here - this is what defines how each
 	 * list item will look.
 	 */
+	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent){
 
@@ -51,7 +52,7 @@ public class PersonalListCustomListview extends ArrayAdapter<ListItem> {
 		 * 
 		 * Therefore, i refers to the current Item object.
 		 */
-		ListItem i = objects.get(position);
+		PersonalListItem i = objects.get(position);
 
 		if (i != null) {
 
@@ -60,7 +61,8 @@ public class PersonalListCustomListview extends ArrayAdapter<ListItem> {
 
 			TextView tt = (TextView) v.findViewById(R.id.listtoptext);
 			TextView mt = (TextView) v.findViewById(R.id.listmiddletext);
-
+			TextView pt = (TextView) v.findViewById(R.id.personal_points_tv);
+			
 			// check to see if each individual textview is null.
 			// if not, assign some text!
 			if (tt != null){
@@ -68,6 +70,9 @@ public class PersonalListCustomListview extends ArrayAdapter<ListItem> {
 			}
 			if (mt != null){
 				mt.setText(i.getDescription());
+			}
+			if (pt != null){
+				pt.setText(Integer.toString(i.getPoints()));
 			}
 		}
 
