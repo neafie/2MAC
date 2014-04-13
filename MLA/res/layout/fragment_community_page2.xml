@@ -220,7 +220,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/ratingBar1"
         android:gravity="center"
-        android:text="Previous achievement"
+        android:text="@string/previous_community_page"
         android:textColor="#008FD5"
         android:textSize="20dip" />
 
