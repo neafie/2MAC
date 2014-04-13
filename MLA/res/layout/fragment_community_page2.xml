@@ -1,38 +1,31 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+ <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+      android:id="@+id/scrollView2"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" >
+
+<RelativeLayout 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DEE6E9"
-    android:gravity="center"
-    tools:context=".CommunityPage1" >
+    android:gravity="center" >
 
     <LinearLayout
         android:id="@+id/footer"
         android:layout_width="fill_parent"
         android:layout_height="90dip"
+        android:layout_below="@+id/gotopage2"
         android:layout_alignParentBottom="true"
         android:background="@layout/footer_comm"
         android:orientation="horizontal" >
     </LinearLayout>
 
     <TextView
-        android:id="@+id/gotopage2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/footer"
-        android:layout_alignParentLeft="true"
-        android:gravity="center"
-        android:text="@string/next_page"
-        android:textColor="#008FD5"
-        android:textSize="20dip" />
-
-    <TextView
         android:id="@+id/TextView01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/ratingBar1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:layout_below="@+id/b_addcomp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="false"
         android:gravity="center"
@@ -42,14 +35,16 @@
 
     <RatingBar
         android:id="@+id/ratingBar1"
+        style="android:ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/gotopage2"
+        android:layout_below="@+id/TextView01"
         android:layout_centerHorizontal="true"
         android:contentDescription="Rate this Achievment"
         android:gravity="center"
         android:max="5"
-        android:maxHeight="30dp"
+        android:maxHeight="50dp"
+        android:minHeight="50dp"
         android:numStars="5"
         android:rating="3"
         android:stepSize="1" />
@@ -63,7 +58,7 @@
         android:layout_marginTop="26dp"
         android:layout_toRightOf="@+id/imageView1"
         android:gravity="center"
-        android:text="Donkey Punch a 3rd Grader"
+        android:text="Go to the home of the national champs"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#372c24" />
 
@@ -76,7 +71,7 @@
         android:layout_below="@+id/tv_desc_s"
         android:gravity="center"
         android:hint="?android:attr/textAppearanceSmall"
-        android:text="Please do not donkey punch a 3rd grader"
+        android:text="I am a champion!"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="#372c24"
         android:textSize="12sp" />
@@ -85,10 +80,10 @@
         android:id="@+id/b_addcomp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/TextView01"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:text="Completed!" />
+        android:text="Completed!"
+        android:layout_below="@+id/tv_time_remain" />
 
     <ProgressBar
         android:id="@+id/progressBar1"
@@ -134,27 +129,19 @@
         android:text="Description: " />
 
     <TextView
-        android:id="@+id/tv_time_remain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/b_addcomp"
-        android:layout_alignParentLeft="true"
-        android:text="Time Remaining: " />
-
-    <TextView
         android:id="@+id/tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/b_addcomp"
         android:layout_toRightOf="@+id/tv_time_remain"
+        android:layout_below="@+id/ProgressBar02"
         android:text="Day" />
 
     <TextView
         android:id="@+id/tv_hour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/b_addcomp"
         android:layout_toRightOf="@+id/tv_time"
+        android:layout_below="@+id/ProgressBar02"
         android:text="Hour" />
 
     <TextView
@@ -163,6 +150,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/b_addcomp"
         android:layout_toRightOf="@+id/tv_hour"
+        android:layout_below="@+id/ProgressBar02"
         android:text="Min" />
 
     <TextView
@@ -171,6 +159,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/b_addcomp"
         android:layout_alignParentRight="true"
+        android:layout_below="@+id/ProgressBar02"
         android:text="COMP2" />
 
     <TextView
@@ -179,6 +168,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/b_addcomp"
         android:layout_toLeftOf="@+id/tv_numb_i"
+        android:layout_below="@+id/ProgressBar02"
         android:text="Completions: " />
 
     <ImageView
@@ -206,4 +196,33 @@
         android:layout_below="@+id/progressBar1"
         android:text="Completions Needed: " />
 
+    <TextView
+        android:id="@+id/tv_time_remain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ProgressBar02"
+        android:text="Time Remaining: " />
+
+    <ProgressBar
+        android:id="@+id/ProgressBar02"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tv_points_s" />
+
+    <TextView
+        android:id="@+id/gotopage2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ratingBar1"
+        android:gravity="center"
+        android:text="Previous achievement"
+        android:textColor="#008FD5"
+        android:textSize="20dip" />
+
 </RelativeLayout>
+</ScrollView>
