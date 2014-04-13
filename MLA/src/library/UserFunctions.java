@@ -1,10 +1,14 @@
 package library;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
  
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
  
 import android.content.Context;
@@ -84,6 +88,7 @@ public class UserFunctions {
         DatabaseHandler db = new DatabaseHandler(context);
         db.resetTables();
         return true;
-    }
-     
+    }   
 }
+
+
