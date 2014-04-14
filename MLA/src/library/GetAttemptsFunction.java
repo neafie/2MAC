@@ -7,12 +7,12 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
-public class GetAttemptsFunctions {
+public class GetAttemptsFunction {
 
 	private JSONParser jsonParser;
 	private static String url_all_lists = "http://gza.bellwethersystems.com/vie_api/include/get_all_attempts.php";
 
-	public ListFunctions() {
+	public GetAttemptsFunction() {
 		jsonParser = new JSONParser();
 	}
 
