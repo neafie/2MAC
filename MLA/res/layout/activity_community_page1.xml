@@ -122,7 +122,7 @@
         android:layout_alignBaseline="@+id/tv_points_s"
         android:layout_alignBottom="@+id/tv_points_s"
         android:layout_toRightOf="@+id/tv_points_s"
-        android:text="POI" />
+        android:text="500" />
 
     <ProgressBar
         android:id="@+id/ProgressBar01"
@@ -141,30 +141,9 @@
         android:layout_below="@+id/ProgressBar01"
         android:text="Description: " />
 
-    <TextView
-        android:id="@+id/tv_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/tv_time_remain"
-        android:layout_below="@+id/ProgressBar02"
-        android:text="Day" />
+    
 
-    <TextView
-        android:id="@+id/tv_hour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/tv_time"
-        android:layout_below="@+id/ProgressBar02"
-        android:text="Hour" />
-
-    <TextView
-        android:id="@+id/tv_min"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/b_addcomp"
-        android:layout_toRightOf="@+id/tv_hour"
-        android:layout_below="@+id/ProgressBar02"
-        android:text="Min" />
+    
 
     <TextView
         android:id="@+id/tv_com2_i"
@@ -173,7 +152,7 @@
         android:layout_above="@+id/b_addcomp"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/ProgressBar02"
-        android:text="COMP2" />
+        android:text="" />
 
     <TextView
         android:id="@+id/tv_com2_s"
@@ -199,7 +178,7 @@
         android:layout_alignBaseline="@+id/tv_com_s"
         android:layout_alignBottom="@+id/tv_com_s"
         android:layout_alignParentRight="true"
-        android:text="NUMB" />
+        android:text="1" />
 
     <TextView
         android:id="@+id/tv_com_s"
@@ -215,7 +194,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/ProgressBar02"
-        android:text="Time Remaining: " />
+        android:text="Time Remaining: N/A " />
 
     <ProgressBar
         android:id="@+id/ProgressBar02"

@@ -17,7 +17,7 @@ import library.ListFunctions;
 public class CommunityPage1 extends BaseFragment {
 
 	View view;
-	private TextView mGotoButton;
+	private TextView mGotoButton, tvDescription, tvName, tvPoints, tvCompletionsNeeded, tvCompletions;
 	
 	//JSON Node names
 		private static final String TAG_SUCCESS = "success";
@@ -38,7 +38,7 @@ public class CommunityPage1 extends BaseFragment {
 		 mGotoButton =   (TextView) view.findViewById(R.id.gotopage2);
 	     mGotoButton.setOnClickListener(listener);
 	    
-	    new MyAsyncTask().execute(14);
+	    new MyAsyncTask().execute(2);
 	    
 		return view;
 	}
@@ -58,8 +58,8 @@ public class CommunityPage1 extends BaseFragment {
     		ListFunctions listFunction = new ListFunctions();
     		if (integers.length != 1)
     			return null;
-    		JSONObject json = listFunction.getLists(integers[0]);
-    		Log.d("All lists: ", json.toString() );
+    		JSONObject json = listFunction.getAchievements(integers[0]);
+    		Log.d("All achievements: ", json.toString() );
     		return json;
     	}
     	

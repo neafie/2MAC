@@ -12,7 +12,7 @@ public class CreateListFunctions {
 	private JSONParser jsonParser;
 	private static String url_all_lists = "http://gza.bellwethersystems.com/vie_api/include/create_list.php";
 
-	public ListFunctions() {
+	public CreateListFunctions() {
 		jsonParser = new JSONParser();
 	}
 
