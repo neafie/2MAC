@@ -12,7 +12,7 @@ public class CreateAchievementFunctions {
 	private JSONParser jsonParser;
 	private static String url_all_lists = "http://gza.bellwethersystems.com/vie_api/include/create_achievement.php";
 
-	public CreateAchievementFunctions() {
+	public ListFunctions() {
 		jsonParser = new JSONParser();
 	}
 
