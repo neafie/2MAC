@@ -7,18 +7,18 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
-public class GetAchievementsFunctions {
+public class GetAttemptsFunctions {
 
 	private JSONParser jsonParser;
-	private static String url_all_lists = "http://gza.bellwethersystems.com/vie_api/include/get_all_achievements.php";
+	private static String url_all_lists = "http://gza.bellwethersystems.com/vie_api/include/get_all_attempts.php";
 
-	public ListFunctions() {
+	public GetAttemptsFunctions() {
 		jsonParser = new JSONParser();
 	}
 
-	public JSONObject createList(String lid) {
+	public JSONObject createList(String aid) {
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("lid", lid));
+		params.add(new BasicNameValuePair("aid", aid));
 		JSONObject json = jsonParser.getJSONFromUrl(url_all_lists,params);
 
 		return json;
