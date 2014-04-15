@@ -58,6 +58,9 @@ public class CommunityPage1 extends BaseFragment {
 										true, true);
 				break;
 			case R.id.b_addcomp:
+				mActivity.pushFragments(AppConstants.TAB_C, new Community_Achievement_Details_Fragment(),
+										true, true);
+				break;
 				
 			
 			}
