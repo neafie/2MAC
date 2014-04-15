@@ -37,5 +37,7 @@
     <string name="title_activity_new_friends">NewFriends</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_rate_us">RateUs</string>
+    <string name="title_activity_approval">Approvals</string>
+    <string name="title_activity_approval2">Approval2</string>
 
 </resources>

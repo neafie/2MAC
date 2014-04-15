@@ -95,6 +95,14 @@
             android:name="com.mlong.mla.RateUs"
             android:label="@string/title_activity_rate_us" >
         </activity>
+        <activity
+            android:name="com.mlong.mla.Approval"
+            android:label="@string/title_activity_approval" >
+        </activity>
+        <activity
+            android:name="com.mlong.mla.Approval2"
+            android:label="@string/title_activity_approval" >
+        </activity>
     </application>
 
 </manifest>

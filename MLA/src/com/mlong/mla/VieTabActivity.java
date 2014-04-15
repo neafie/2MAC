@@ -112,7 +112,8 @@ OnDateSetListener,TimePickerDialog.OnTimeSetListener{
            
 			@Override
 			public boolean onMenuItemClick(MenuItem item) {
-               
+				Intent i = new Intent(getBaseContext(),  Approval.class);
+                startActivity(i);
         		return true;
 			}
         })
