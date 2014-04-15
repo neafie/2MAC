@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import library.CreateAttemptFunctions;
+import library.CreateListFunctions;
 import library.ListFunctions;
 
 import org.json.JSONArray;
@@ -243,17 +244,21 @@ public class Friend_Lists_Fragment extends BaseFragment
 		 Random rand = new Random();
 		 int randkey = rand.nextInt(MAX_VALUE);
 		 
-		 ACHDatabase myDB = new ACHDatabase(getActivity());
+		 /*ACHDatabase myDB = new ACHDatabase(getActivity());
 		 myDB.open();			
 		 myDB.createListInsert(randkey,list_name.getText().toString().trim(),list_desc.getText().toString().trim());
 		 myDB.close();
-		
+		*/
+		 
 		 ListItem myitem = new ListItem();
-		 myitem.setListkey(randkey);
-		 myitem.setName(list_name.getText().toString());
-		 myitem.setDescription(list_desc.getText().toString());
-		 m_parts.add(myitem); 
+		 String lname = list_name.getText().toString();
+		 String ldesc = list_desc.getText().toString();
+		 new PushLists().execute(lname,ldesc);
+		 
+		 
+		 /*m_parts.add(myitem); 
 		 m_adapter.notifyDataSetChanged();
+		 */
 	    }
 	}
 	
@@ -266,5 +271,29 @@ public class Friend_Lists_Fragment extends BaseFragment
 		m_adapter.notifyDataSetChanged();
 	}
 	
-	
+	private class PushLists extends AsyncTask<String, Void, JSONObject> {
+        
+        @Override
+		protected JSONObject doInBackground(String... params) {
+        	CreateListFunctions listFunction = new CreateListFunctions();
+            JSONObject json = listFunction.createList("14",params[0],params[1]);
+            
+            return json;
+        }
+        
+        @Override
+		protected void onPostExecute(JSONObject json) {
+        	
+
+            //mActivity.pushFragments(AppConstants.TAB_F, Friend_Lists_Fragment.this,true,true);
+        			
+        		
+       
+        }
+
+	}
+
 }
+
+	
+	

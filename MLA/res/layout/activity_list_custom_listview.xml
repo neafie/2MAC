@@ -48,58 +48,12 @@
        android:layout_alignParentTop="true"
        android:src="@drawable/the_new_icon" />
 
-   <TextView
-       android:id="@+id/TextView02"
-       android:layout_width="wrap_content"
-       android:layout_height="26dip"
-       android:layout_alignLeft="@+id/TextView01"
-       android:layout_below="@+id/TextView01"
-       android:ellipsize="marquee"
-       android:gravity="center_vertical"
-       android:paddingRight="20dp"
-       android:singleLine="true"
-       android:text="Leader:"
-       android:textSize="10sp"
-       android:textStyle="bold" />
+   
 
-   <TextView
-       android:id="@+id/TextView03"
-       android:layout_width="wrap_content"
-       android:layout_height="26dip"
-       android:layout_above="@+id/TextView02"
-       android:layout_toRightOf="@+id/TextView01"
-       android:ellipsize="marquee"
-       android:gravity="center_vertical"
-       android:singleLine="true"
-       android:text="Points"
-       android:textSize="10sp"
-       android:textStyle="bold" />
+   
 
-   <TextView
-       android:id="@+id/TextView01"
-       android:layout_width="wrap_content"
-       android:layout_height="26dip"
-       android:layout_alignParentTop="true"
-       android:layout_toRightOf="@+id/listmiddletext"
-       android:ellipsize="marquee"
-       android:gravity="center_vertical"
-       android:paddingRight="20dp"
-       android:singleLine="true"
-       android:text="Current Points:"
-       android:textSize="10sp"
-       android:textStyle="bold" />
+   
 
-   <TextView
-       android:id="@+id/TextView04"
-       android:layout_width="wrap_content"
-       android:layout_height="26dip"
-       android:layout_alignLeft="@+id/TextView03"
-       android:layout_below="@+id/TextView03"
-       android:ellipsize="marquee"
-       android:gravity="center_vertical"
-       android:singleLine="true"
-       android:text="Points"
-       android:textSize="10sp"
-       android:textStyle="bold" />
+   
 
 </RelativeLayout>
