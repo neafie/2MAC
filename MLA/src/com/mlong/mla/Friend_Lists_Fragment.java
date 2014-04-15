@@ -1,16 +1,26 @@
 package com.mlong.mla;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
+
+import library.CreateAttemptFunctions;
+import library.ListFunctions;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.mlong.mla.ListItems.ListItem;
 
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Dialog;
 import android.database.Cursor;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +40,16 @@ public class Friend_Lists_Fragment extends BaseFragment
 	
 	private ArrayList<ListItem> m_parts = new ArrayList<ListItem>();
  	private ListCustomListview m_adapter;
+ 	
+ // JSON Node names
+ 	private static final String TAG_SUCCESS = "success";
+ 	private static final String TAG_LISTS = "list";
+ 	private static final String TAG_LID = "lid";
+ 	private static final String TAG_UID_CREATOR = "uid_ceator";
+ 	private static final String TAG_LIST_NAME = "list_name";
+ 	private static final String TAG_LIST_DESCRIPTION = "list_description";
+ 	private static final String TAG_CREATED_AT = "created_at";
+
    
     int REMOVE;
     int forkey;
@@ -53,7 +73,9 @@ public class Friend_Lists_Fragment extends BaseFragment
 		myList.setOnItemClickListener(listener);
 		myList.setOnItemLongClickListener(Longlistener);
 
-		ACHDatabase myDB = new ACHDatabase(getActivity());
+		new GetLists().execute(14);
+		
+		/*ACHDatabase myDB = new ACHDatabase(getActivity());
 		Cursor cursor;
 		myDB.open();
 		
@@ -86,7 +108,7 @@ public class Friend_Lists_Fragment extends BaseFragment
 		
         cursor.close();
         myDB.close();
-		
+		*/
        
 		
 		AddList.setOnClickListener(
@@ -102,6 +124,53 @@ public class Friend_Lists_Fragment extends BaseFragment
 		
 		return view;
 	}
+    
+    private class GetLists extends AsyncTask<Integer, Void, JSONObject> {
+        
+        @Override
+		protected JSONObject doInBackground(Integer... params) {
+        	ListFunctions listFunction = new ListFunctions();
+            JSONObject json = listFunction.getLists(params[0]);
+            return json;
+        }
+        
+        @Override
+		protected void onPostExecute(JSONObject json) {
+        	ArrayList<HashMap<String,String>> lists;
+        	JSONArray jLists = null;
+        	
+        	try{
+        		int success = json.getInt(TAG_SUCCESS);
+        		if(success == 1) {
+        			jLists = json.getJSONArray(TAG_LISTS);
+        			
+        			for(int i=0; i < jLists.length(); i++) {
+        				JSONObject c = jLists.getJSONObject(i);
+        				ListItem myitem = new ListItem();
+                    	String lname = c.getString(TAG_LIST_NAME);
+                    	Log.d("test",c.getString(TAG_LIST_NAME));
+                    	String ldesc = c.getString(TAG_LIST_DESCRIPTION);
+                    	forkey = Integer.parseInt(c.getString(TAG_LID));
+                    	
+                    	myitem.setDescription(ldesc);
+                    	myitem.setName(lname);
+                    	myitem.setListkey(forkey);
+                    	
+                    	//add item to list
+                		m_parts.add(myitem);
+                		m_adapter.notifyDataSetChanged();
+            
+        			}
+        		}
+        		
+        	}
+        	catch(JSONException e) {
+        		e.printStackTrace();
+        	}
+        }
+
+  }
+        
     
     private OnItemClickListener listener =  new AdapterView.OnItemClickListener() {
 
