@@ -13,6 +13,7 @@ import com.mlong.mla.AddDialog.NoticeDialogListener;
 import android.app.TimePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -111,7 +112,6 @@ OnDateSetListener,TimePickerDialog.OnTimeSetListener{
            
 			@Override
 			public boolean onMenuItemClick(MenuItem item) {
-				
                
         		return true;
 			}
@@ -124,6 +124,8 @@ OnDateSetListener,TimePickerDialog.OnTimeSetListener{
            
 			@Override
 			public boolean onMenuItemClick(MenuItem item) {
+				Intent i = new Intent(getBaseContext(),  NewFriends.class);
+                startActivity(i);
 				
         		return true;
 			}
@@ -136,7 +138,9 @@ OnDateSetListener,TimePickerDialog.OnTimeSetListener{
            
 			@Override
 			public boolean onMenuItemClick(MenuItem item) {
-				
+				Uri uri = Uri.parse("http://gza.bellwethersystems.com/vie");
+				 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+				 startActivity(intent);
         		return true;
 			}
         })

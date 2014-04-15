@@ -33,5 +33,9 @@
     <string name="title_activity_personal_page1">PersonalPage1</string>
     <string name="title_activity_fragment_view_group">FragmentViewGroup</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-	<string name="previous_community_page"> "&lt;""&lt;""&lt;" Previous Achievement</string>
+    <string name="previous_community_page"> "&lt;""&lt;""&lt;" Previous Achievement</string>
+    <string name="title_activity_new_friends">NewFriends</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_rate_us">RateUs</string>
+
 </resources>
