@@ -16,9 +16,9 @@ public class GetAttemptsFunctions {
 		jsonParser = new JSONParser();
 	}
 
-	public JSONObject createList(String aid) {
+	public JSONObject getAttempts(String atid) {
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("aid", aid));
+		params.add(new BasicNameValuePair("atid", atid));
 		JSONObject json = jsonParser.getJSONFromUrl(url_all_lists,params);
 
 		return json;

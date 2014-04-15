@@ -1,13 +1,23 @@
 package com.mlong.mla;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import library.GetAttemptsFunctions;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.actionbarsherlock.view.MenuItem;
 import com.mlong.mla.AchItems.Item;
+import com.mlong.mla.ListItems.ListItem;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.database.Cursor;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -32,6 +42,19 @@ int REMOVE2;
 	int RESULT_CANCELED = 0;
 	View view;
 	MenuItem deleteList;
+	int forkey;
+	
+	// JSON Node names
+	private static final String TAG_SUCCESS = "success";
+	private static final String TAG_ATTEMPTS = "attempt";
+	private static final String TAG_ATID = "atid";
+	private static final String TAG_UID_CREATOR = "uid_ceator";
+	private static final String TAG_AID_BELONGSTO = "aid_belongsto";
+	private static final String TAG_POS_VOTES = "pos_votes";
+	private static final String TAG_NEG_VOTES = "neg_Votes";
+	private static final String TAG_PICTURE_LINK = "picture_link";
+	private static final String TAG_VIDEO_LINK = "video_link";
+	private static final String TAG_CREATED_AT = "created_at";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +80,7 @@ AppConstants.icon = null;
         //AList.setOnItemClickListener(listener);
         
               
-        String aname;
+       /* String aname;
     	String dname;
     	long time;
     	String mydate = null;
@@ -84,10 +107,69 @@ AppConstants.icon = null;
         
 		m_parts.add(myitem1);
 		m_parts.add(myitem2);
-    	m_adapter.notifyDataSetChanged();	
+    	m_adapter.notifyDataSetChanged();	*/
 		
+    	new GetAttempts().execute("2");
+    	
 		
 	}
 
+	
+	
+	 private class GetAttempts extends AsyncTask<String, Void, JSONObject> {
+	        
+	        @Override
+			protected JSONObject doInBackground(String... params) {
+	        	GetAttemptsFunctions listFunction = new GetAttemptsFunctions();
+	            JSONObject json = listFunction.getAttempts(params[0]);
+	            return json;
+	        }
+	        
+	        @Override
+			protected void onPostExecute(JSONObject json) {
+	        	ArrayList<HashMap<String,String>> lists;
+	        	JSONArray jLists = null;
+	        	
+	        	try{
+	        		int success = json.getInt(TAG_SUCCESS);
+	        		if(success == 1) {
+	        			jLists = json.getJSONArray(TAG_ATTEMPTS);
+	        			
+	        			for(int i=0; i < jLists.length(); i++) {
+	        				JSONObject c = jLists.getJSONObject(i);
+	        				Item myitem = new Item();
+	                    	String lname = c.getString(TAG_ATID);
+	                    	//Log.d("test",c.getString(TAG_LIST_NAME));
+	                    	//String ldesc = c.getString(TAG_LIST_DESCRIPTION);
+	                    	//forkey = Integer.parseInt(c.getString(TAG_LID));
+	                    	
+	                    	myitem.setDescription(" ");
+	                    	myitem.setName(lname);
+	                    	myitem.setAchkey(8457439);
+	                    	myitem.setIconPath("rocket_");
+	                    	
+	                    	//add item to list
+	                		m_parts.add(myitem);
+	                		m_adapter.notifyDataSetChanged();
+	            
+	        			}
+	        		}
+	        		
+	        	}
+	        	catch(JSONException e) {
+	        		e.printStackTrace();
+	        	}
+	        }
+
+	  }
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
